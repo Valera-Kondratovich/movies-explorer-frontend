@@ -1,0 +1,28 @@
+.header {
+  box-sizing: border-box;
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  gap: 10px;
+  height: 74px;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #073042;
+  padding: 0 70px;
+}
+
+.header_color {
+  background-color: #ffffff;
+}
+
+@media screen and (max-width: 860px) {
+  .header {
+    padding: 0 30px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .header {
+    padding: 0 15px;
+  }
+}

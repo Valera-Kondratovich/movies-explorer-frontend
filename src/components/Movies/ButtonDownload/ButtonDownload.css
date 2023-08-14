@@ -1,0 +1,40 @@
+.btn-wrap {
+  padding: 59px 0 75px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-down {
+  font-family: 'Inter', 'Arial', sans-serif;
+  text-align: center;
+  font-weight: 500;
+  max-width: 240px;
+  height: 36px;
+  font-size: 12px;
+  border: 0;
+  flex-grow: 1;
+  background-color: #fff;
+  opacity: 1;
+  transition: opacity .2s linear;
+}
+
+.btn-down:hover {
+  opacity: .7;
+}
+
+@media screen and (max-width: 768px) {
+  .btn-wrap {
+    padding: 59px 0 84px;
+  }
+
+  .btn-down {
+    max-width: 310px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .btn-wrap {
+    padding: 59px 0 75px;
+  }
+}

@@ -1,0 +1,51 @@
+.nav-tab__wrap-auth {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+
+.nav-tab__link-auth {
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.33;
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  border-radius: 5px;
+  text-decoration: none;
+  text-align: center;
+  opacity: 1;
+  transition: opacity .2s linear;
+}
+
+.nav-tab__link-auth_font {
+  align-self: center;
+  color: #000;
+  background-color: rgb(43, 224, 128);
+  width: 76px;
+  height: 32px;
+  line-height: 31px;
+  opacity: 1;
+  transition: opacity .2s linear;
+}
+
+.nav-tab__link-auth:hover {
+  opacity: .7;
+}
+
+@media screen and (max-width: 360px) {
+  .nav-tab__wrap-auth {
+    gap: 14px;
+  }
+
+  .nav-tab__link-auth {
+    font-size: 10px;
+  }
+
+  .nav-tab__link-auth_font {
+    width: 53px;
+    height: 26px;
+  }
+}

@@ -1,0 +1,137 @@
+.about-project {
+  padding: 0 70px 103px;
+
+}
+
+.about-project__row {
+  padding: 110px 0 19px;
+  border-bottom: 1px solid #000;
+}
+
+.about-project__title {
+  font-family: 'Inter', 'Arial', sans-serif;
+  letter-spacing: -1px;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.33;
+  margin: 0;
+}
+
+.about-project__wrap {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 68px 0 113px;
+}
+
+.about-project__inner {}
+
+.about-project__sybtitle {
+  font-family: 'Inter', 'Arial', sans-serif;
+  letter-spacing: -1px;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.33;
+  padding-bottom: 26px;
+  margin: 0;
+}
+
+.about-project__text {
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.33;
+  margin: 0;
+}
+
+.about-project__elements {
+  display: grid;
+  grid-template-columns: 20% 80%;
+  grid-template-rows: repeat(2, 36px);
+}
+
+.about-project__element {
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+.about-project__element_font1 {
+  background-color: #2BE080;
+}
+
+.about-project__element_font2 {
+  background-color: #F2F2F2;
+}
+
+.about-project__element_color-text {
+  color: #A0A0A0;
+}
+
+
+@media screen and (max-width: 768px) {
+  .about-project {
+    padding: 0 50px 86px;
+  }
+
+  .about-project__row {
+    padding-top: 90px;
+
+  }
+
+  .about-project__wrap {
+    padding-bottom: 85px;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .about-project {
+    padding: 0 25px 80px;
+  }
+
+}
+
+@media screen and (max-width: 520px) {
+  .about-project {
+    padding: 0 18px 36px;
+  }
+
+  .about-project__row {
+    padding-top: 70px;
+    padding-bottom: 28px;
+  }
+
+  .about-project__title {
+    font-size: 18px;
+  }
+
+  .about-project__wrap {
+    flex-direction: column;
+    gap: 56px;
+    padding-top: 60px;
+    padding-bottom: 58px;
+  }
+
+  .about-project__sybtitle {
+    font-size: 18px;
+    padding-bottom: 16px;
+  }
+
+  .about-project__text {
+    font-size: 11px;
+  }
+
+  .about-project__elements {
+    display: grid;
+    grid-template-columns: 35% 65%;
+    grid-template-rows: repeat(2, 36px);
+  }
+
+  .about-project__element {
+    font-size: 11px;
+  }
+}
