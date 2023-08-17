@@ -3,10 +3,12 @@ import imgStudentPath from "../../../images/fotoStudent.jpg";
 import { Routes, Route, useNavigate, Link } from "react-router-dom";
 // import * as auth from "../utils/auth";
 
-function AboutMe() {
+function AboutMe(props) {
   return (
     <>
-      <section className="about-me">
+      <section
+        className={`about-me ${props.nav && "about-me_background-activ"}`}
+      >
         <div className="about-me__row">
           <h2 className="about-me__title">Студент</h2>
         </div>
@@ -21,13 +23,15 @@ function AboutMe() {
               Контур». После того, как прошёл курс по веб-разработке, начал
               заниматься фриланс-заказами и ушёл с постоянной работы.
             </p>
-            <Link
-              className="about-me__github"
-              to="https://github.com/Valera-Kondratovich"
-              target="_blank"
-            >
-              Github
-            </Link>
+            <div className="about-me__wrap">
+              <Link
+                className="about-me__github"
+                to="https://github.com/Valera-Kondratovich"
+                target="_blank"
+              >
+                Github
+              </Link>
+            </div>
           </div>
           <img
             className="about-me__foto-student"

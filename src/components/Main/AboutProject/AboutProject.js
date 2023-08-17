@@ -2,10 +2,15 @@ import React from "react";
 import { Routes, Route, useNavigate, Link } from "react-router-dom";
 // import * as auth from "../utils/auth";
 
-function AboutProject() {
+function AboutProject(props) {
   return (
     <>
-      <section className="about-project">
+      <section
+        id="about-project"
+        className={`about-project ${
+          props.nav && "about-project_background-activ"
+        }`}
+      >
         <div className="about-project__row">
           <h2 className="about-project__title">О проекте</h2>
         </div>

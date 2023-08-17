@@ -47,10 +47,11 @@
 .techs__container {
   display: flex;
   justify-content: center;
-  max-width: 720px;
+  max-width: 690px;
   gap: 12px;
   flex-wrap: nowrap;
   margin: auto;
+  padding: 0;
 
 }
 
@@ -70,22 +71,27 @@
   border-radius: 10px;
 }
 
+.techs_background-activ {
+  background-color: rgba(0, 0, 0, .3);
+  opacity: .5;
+}
+
 
 @media screen and (max-width: 860px) {
   .techs {
-    padding: 0 40px 100px;
+    padding: 0 50px 100px;
   }
 }
 
 @media screen and (max-width: 800px) {
   .techs__text {
-    width: 84px;
+    width: 82px;
   }
 }
 
 @media screen and (max-width: 768px) {
   .techs {
-    padding: 0 50px 88px;
+    padding: 0 50px 90px;
   }
 
   .techs__row {
@@ -93,7 +99,7 @@
   }
 
   .techs__inner {
-    padding: 78px 0 83px;
+    padding: 77px 0 83px;
   }
 
   .techs__sybtitle {
@@ -101,11 +107,16 @@
   }
 
   .techs__desc {
-    font-size: 14px;
+    font-size: 13px;
+    max-width: 468px;
   }
 }
 
 @media screen and (max-width: 600px) {
+  .techs {
+    padding: 0 30px 90px;
+  }
+
   .techs__container {
     justify-content: start;
     max-width: 400px;
@@ -114,10 +125,6 @@
 }
 
 @media screen and (max-width: 520px) {
-  .techs {
-    padding: 0 18px 70px;
-  }
-
   .techs__title {
     font-size: 18px;
   }
@@ -137,11 +144,13 @@
 
 @media screen and (max-width: 320px) {
   .techs {
-    padding: 0 18px 47px;
+    padding: 0 14px 60px;
     background-color: #fff;
+
   }
 
   .techs__row {
+    padding-top: 50px;
     padding-bottom: 26px;
   }
 
@@ -151,6 +160,10 @@
 
   .techs__inner {
     padding: 59px 0 57px;
+  }
+
+  .techs__text {
+    height: 55px;
   }
 
   .techs__sybtitle {

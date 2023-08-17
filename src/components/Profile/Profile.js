@@ -37,52 +37,69 @@ function Profile(props) {
   };
   return (
     <>
-      <Header login={props.login} />
-      <form className="profile" name="profile" noValidate onSubmit={onLogin}>
-        <h2 className="profile__title">Привет, Виталий!</h2>
-        <div className="profile__main">
-          <div className="profile__inner">
-            <span className="profile__inner-text">Имя</span>
-            <input
-              className="profile__input"
-              type="text"
-              name="text"
-              onChange={handleChange}
-              value="Виталий"
-              required
-            ></input>
-          </div>
+      <Header
+        login={props.login}
+        burgerNav={props.burgerNav}
+        nav={props.nav}
+      ></Header>
+      <main className="main">
+        <section
+          className={`section-profile ${
+            props.nav && "section-profile_background-activ"
+          }`}
+        >
+          <form
+            className={`profile ${props.nav && "profile_background-activ"}`}
+            name="profile"
+            noValidate
+            onSubmit={onLogin}
+          >
+            <h1 className="profile__title">Привет, Виталий!</h1>
+            <div className="profile__main">
+              <div className="profile__inner">
+                <label className="profile__inner-text">Имя</label>
+                <input
+                  className="profile__input"
+                  type="text"
+                  name="text"
+                  onChange={handleChange}
+                  value="Виталий"
+                  required
+                ></input>
+              </div>
 
-          <div className="profile__inner">
-            <span className="profile__inner-text">E-mail</span>
-            <input
-              className="profile__input"
-              type="email"
-              name="email"
-              onChange={handleChange}
-              value="pochta@yandex.ru"
-              required
-            ></input>
-          </div>
-        </div>
-        <div className="profile__container">
-          <span className="profile__text-error profile__text-error_active">
-            Текст ошибки
-          </span>
-          <button className="profile__submit" type="submit">
-            Сохранить
-          </button>
-          <div className="profile__wrap">
-            <Link className="profile__link" to="/signin">
-              Редактировать
-            </Link>
-            <Link className="profile__link profile__link_color" to="/">
-              Выйти из аккаунта
-            </Link>
-            {/* пока линк потом будет кнопка */}
-          </div>
-        </div>
-      </form>
+              <div className="profile__inner">
+                <label className="profile__inner-text">E-mail</label>
+                <input
+                  className="profile__input"
+                  type="email"
+                  name="email"
+                  onChange={handleChange}
+                  value="pochta@yandex.ru"
+                  required
+                ></input>
+              </div>
+            </div>
+            <div className="profile__container">
+              <span className="profile__text-error profile__text-error_active">
+                Текст ошибки
+              </span>
+              <button className="profile__submit" type="submit">
+                Сохранить
+              </button>
+              <div className="profile__wrap">
+                <Link className="profile__link" to="/signin">
+                  Редактировать
+                </Link>
+                <Link className="profile__link profile__link_color" to="/">
+                  Выйти из аккаунта
+                </Link>
+                {/* пока линк потом будет кнопка */}
+              </div>
+            </div>
+          </form>
+        </section>
+      </main>
     </>
   );
 }

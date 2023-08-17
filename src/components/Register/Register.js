@@ -3,7 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 // import * as auth from "../utils/auth";
 import logoPath from "../../images/logo.svg";
 
-function Register({ handleLogin, handleUserData, handleCardsData }) {
+function Register(props) {
   const [formValue, setFormValue] = useState({
     email: "",
     password: "",
@@ -35,65 +35,78 @@ function Register({ handleLogin, handleUserData, handleCardsData }) {
     // .catch(err=> console.log(err))
   };
   return (
-    <form className="register" name="register" noValidate onSubmit={onLogin}>
-      <div className="register__header">
-        <Link className="register__link" to="/">
-          <img className="logo" src={logoPath} alt="логотип" />
-        </Link>
-        <h2 className="register__title">Добро пожаловать!</h2>
-      </div>
-      <div className="register__main">
-        <div className="register__inner">
-          <span className="register__inner-text">Имя</span>
-          <input
-            className="register__input"
-            type="text"
-            // placeholder="Email"
-            name="text"
-            onChange={handleChange}
-            required
-          ></input>
-        </div>
+    <main className="main">
+      <section
+        className={`section-register ${
+          props.nav && "section-register_background-activ"
+        }`}
+      >
+        <form
+          className="register"
+          name="register"
+          noValidate
+          onSubmit={onLogin}
+        >
+          <div className="register__header">
+            <Link className="register__link" to="/">
+              <img className="logo" src={logoPath} alt="логотип" />
+            </Link>
+            <h1 className="register__title">Добро пожаловать!</h1>
+          </div>
+          <div className="register__main">
+            <div className="register__inner">
+              <label className="register__inner-text">Имя</label>
+              <input
+                className="register__input"
+                type="text"
+                // placeholder="Email"
+                name="text"
+                onChange={handleChange}
+                required
+              ></input>
+            </div>
 
-        <div className="register__inner">
-          <span className="register__inner-text">E-mail</span>
-          <input
-            className="register__input"
-            type="email"
-            // placeholder="Email"
-            name="email"
-            onChange={handleChange}
-            required
-          ></input>
-        </div>
+            <div className="register__inner">
+              <label className="register__inner-text">E-mail</label>
+              <input
+                className="register__input"
+                type="email"
+                // placeholder="Email"
+                name="email"
+                onChange={handleChange}
+                required
+              ></input>
+            </div>
 
-        <div className="register__inner">
-          <span className="register__inner-text">Пароль</span>
-          <input
-            className="register__input"
-            type="password"
-            // placeholder="Пароль"
-            name="password"
-            onChange={handleChange}
-            required
-          ></input>
-        </div>
-      </div>
-      <div className="register__container">
-        <span className="register__text-error register__text-error_active">
-          Текст ошибки
-        </span>
-        <button className="register__submit" type="submit">
-          Зарегистрироваться
-        </button>
-        <div className="register__wrap">
-          <span className="register__wrap-text">Уже зарегистрированы?</span>
-          <Link className="register__wrap-link" to="/signin">
-            Войти
-          </Link>
-        </div>
-      </div>
-    </form>
+            <div className="register__inner">
+              <label className="register__inner-text">Пароль</label>
+              <input
+                className="register__input"
+                type="password"
+                // placeholder="Пароль"
+                name="password"
+                onChange={handleChange}
+                required
+              ></input>
+            </div>
+          </div>
+          <div className="register__container">
+            <span className="register__text-error register__text-error_active">
+              Текст ошибки
+            </span>
+            <button className="register__submit" type="submit">
+              Зарегистрироваться
+            </button>
+            <div className="register__wrap">
+              <span className="register__wrap-text">Уже зарегистрированы?</span>
+              <Link className="register__wrap-link" to="/signin">
+                Войти
+              </Link>
+            </div>
+          </div>
+        </form>
+      </section>
+    </main>
   );
 }
 

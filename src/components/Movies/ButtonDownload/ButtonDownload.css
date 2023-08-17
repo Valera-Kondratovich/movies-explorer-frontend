@@ -1,5 +1,5 @@
 .btn-wrap {
-  padding: 59px 0 75px;
+  padding: 59px 0 80px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,7 +9,7 @@
   font-family: 'Inter', 'Arial', sans-serif;
   text-align: center;
   font-weight: 500;
-  max-width: 240px;
+  max-width: 315px;
   height: 36px;
   font-size: 12px;
   border: 0;
@@ -35,6 +35,11 @@
 
 @media screen and (max-width: 320px) {
   .btn-wrap {
-    padding: 59px 0 75px;
+    height: 90px;
+    padding: 31px 0 115px;
+  }
+
+  .btn-down {
+    max-width: 245px;
   }
 }

@@ -10,15 +10,19 @@ import Footer from "../Footer/Footer";
 function Main(props) {
   return (
     <>
-      <Header login={props.login}></Header>
+      <Header
+        login={props.login}
+        burgerNav={props.burgerNav}
+        nav={props.nav}
+      ></Header>
       <main className="main">
-        <Promo />
-        <AboutProject />
-        <Techs />
-        <AboutMe />
-        <Portfolio />
+        <Promo nav={props.nav} />
+        <AboutProject nav={props.nav} />
+        <Techs nav={props.nav} />
+        <AboutMe nav={props.nav} />
+        <Portfolio nav={props.nav} />
       </main>
-      <Footer></Footer>
+      <Footer nav={props.nav} />
     </>
   );
 }

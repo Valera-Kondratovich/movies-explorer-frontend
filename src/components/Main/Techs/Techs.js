@@ -2,10 +2,10 @@ import React from "react";
 import { Routes, Route, useNavigate, Link } from "react-router-dom";
 // import * as auth from "../utils/auth";
 
-function Techs() {
+function Techs(props) {
   return (
     <>
-      <section className="techs">
+      <section className={`techs ${props.nav && "techs_background-activ"}`}>
         <div className="techs__row">
           <h2 className="techs__title">Технологии</h2>
         </div>
@@ -16,15 +16,29 @@ function Techs() {
             дипломном проекте.
           </p>
         </div>
-        <div className="techs__container">
-          <p className="techs__text">HTML</p>
-          <p className="techs__text">CSS</p>
-          <p className="techs__text">JS</p>
-          <p className="techs__text">React</p>
-          <p className="techs__text">Git</p>
-          <p className="techs__text">Express.js</p>
-          <p className="techs__text">mongoDB</p>
-        </div>
+        <ul className="techs__container">
+          <li key={1} className="techs__text">
+            HTML
+          </li>
+          <li key={2} className="techs__text">
+            CSS
+          </li>
+          <li key={3} className="techs__text">
+            JS
+          </li>
+          <li key={4} className="techs__text">
+            React
+          </li>
+          <li key={5} className="techs__text">
+            Git
+          </li>
+          <li key={6} className="techs__text">
+            Express.js
+          </li>
+          <li key={7} className="techs__text">
+            mongoDB
+          </li>
+        </ul>
       </section>
     </>
   );

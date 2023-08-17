@@ -110,6 +110,12 @@
   padding-left: 8px;
 }
 
+.section-search_background-activ {
+  background-color: rgba(0, 0, 0, .3);
+  ;
+  opacity: .5;
+}
+
 @media screen and (max-width: 768px) {
   .search {
     padding: 78px 28px 0;

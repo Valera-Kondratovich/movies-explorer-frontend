@@ -13,8 +13,6 @@
   padding-top: 70px;
 }
 
-.register__link {}
-
 .register__title {
   font-family: 'Inter', 'Arial', sans-serif;
   font-size: 24px;
@@ -59,6 +57,7 @@
 
 .register__input:focus {
   outline: none;
+  border-bottom: 1px solid #3456F3;
 }
 
 .register__container {
@@ -122,16 +121,31 @@
   opacity: .7;
 }
 
+.section-register_background-activ {
+  background-color: rgba(0, 0, 0, .3);
+  ;
+  opacity: .5;
+}
+
 @media screen and (max-width: 768px) {
   .register {
     max-width: 400px;
     margin: auto;
     height: 100vh;
-    margin-top: calc(19vh);
+    padding-top: calc(19vh);
+  }
+
+  .register__header {
+    padding-top: 77px;
   }
 
   .register__container {
     margin: 98px 0 63px;
+  }
+
+  .register__wrap {
+    padding-top: 17px;
+    ;
   }
 }
 
@@ -159,7 +173,7 @@
   }
 
   .register__container {
-    margin: auto 0 20px;
+    margin: auto 0 28px;
   }
 
   .register__submit {

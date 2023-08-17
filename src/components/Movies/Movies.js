@@ -7,17 +7,21 @@ import Footer from "../Footer/Footer";
 import Preloader from "../Preloader/Preloader";
 
 function Movies(props) {
-  console.log(props.buttonDownloadStatus);
-
-  // props.buttonDownloadState();
   return (
     <>
-      <Header login={props.login}></Header>
-      <SearchForm></SearchForm>
-      <MoviesCardList
-        buttonDownloadStatus={props.buttonDownloadStatus}
-      ></MoviesCardList>
-      <Footer></Footer>
+      <Header
+        login={props.login}
+        burgerNav={props.burgerNav}
+        nav={props.nav}
+      ></Header>
+      <main className="main">
+        <SearchForm nav={props.nav}></SearchForm>
+        <MoviesCardList
+          nav={props.nav}
+          buttonDownloadStatus={props.buttonDownloadStatus}
+        ></MoviesCardList>
+      </main>
+      <Footer nav={props.nav}></Footer>
     </>
   );
 }

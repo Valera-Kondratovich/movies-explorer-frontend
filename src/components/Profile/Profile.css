@@ -1,10 +1,16 @@
+.section-profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
 .profile {
   display: flex;
   flex-direction: column;
-  max-width: 410px;
+  width: 410px;
   margin: 0 auto;
-  min-height: 700px;
-  padding: 32px 0 15px;
+  height: 99vh;
 }
 
 .profile__header {
@@ -13,20 +19,19 @@
   padding-top: 70px;
 }
 
-.profile__link {}
-
 .profile__title {
   font-family: 'Inter', 'Arial', sans-serif;
   font-size: 24px;
   font-weight: 500;
   line-height: 1.33;
   margin: 0;
-  padding: 40px 0;
+  padding: 70px 0 40px 0;
   text-align: center;
 }
 
 .profile__main {
   padding-top: 76px;
+  margin-bottom: 90px;
 
 }
 
@@ -34,12 +39,11 @@
   display: flex;
   max-width: 410px;
   height: 32px;
-  border-bottom: 1px solid #000000;
+  border-bottom: 1px solid #E8E8E8;
   margin-bottom: 15px;
 }
 
 .profile__inner-text {
-  /* display:inline; */
   font-family: 'Inter', 'Arial', sans-serif;
   font-size: 12px;
   font-weight: 500;
@@ -66,10 +70,6 @@
 
 .profile__input:focus {
   outline: none;
-}
-
-.profile__container {
-  margin: 90px 0 70px;
 }
 
 .profile__text-error {
@@ -126,6 +126,10 @@
   transition: opacity .2s linear;
 }
 
+.profile__link:visited {
+  color: #000000;
+}
+
 .profile__link:hover {
   opacity: .7;
 }
@@ -134,31 +138,46 @@
   color: #FF004D;
 }
 
+.profile__link_color:visited {
+  color: #FF004D;
+}
+
+.section-profile_background-activ {
+  background-color: rgba(0, 0, 0, .3);
+  ;
+  opacity: .5;
+}
 
 @media screen and (max-width: 768px) {
   .profile {
-    max-width: 410px;
-    margin: auto;
-    height: 100vh;
-    margin-top: calc(19vh);
-  }
-
+    height: 68vh;
+}
   .profile__main {
     padding-top: 47px;
+    margin-bottom: 93px;
+  }
+
+  .profile__wrap {
+    padding-top: 15px;
   }
 }
 
 @media screen and (max-width: 470px) {
   .profile {
-    padding: 29px 30px 0px;
-    margin-top: 0;
+    padding: 0px 30px 0px;
+    height: 87vh;
   }
-
+  .profile__title {
+    padding: 18px 0 40px 0;
+  }
   .profile__main {
     padding-top: 30px;
+    margin-bottom: 262px;
   }
-
   .profile__container {
-    margin: auto 0 60px;
+    margin: 0;
+  }
+.profile__link {
+  font-size: 12px;
   }
 }

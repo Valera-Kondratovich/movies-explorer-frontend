@@ -39,7 +39,7 @@
   font-size: 10px;
   font-weight: 400;
   color: #A0A0A0;
-  padding-bottom: 5px;
+  padding-bottom: 2px;
 }
 
 .login__input {
@@ -60,6 +60,7 @@
 
 .login__input:focus {
   outline: none;
+  border-bottom: 1px solid #3456F3;
 }
 
 .login__container {
@@ -124,15 +125,29 @@
   opacity: .7;
 }
 
+.section-login_background-activ {
+  background-color: rgba(0, 0, 0, .3);
+  ;
+  opacity: .5;
+}
+
 @media screen and (max-width: 768px) {
   .login {
     max-width: 400px;
     height: 100vh;
-    margin-top: calc(19vh);
+    padding-top: calc(19vh);
+  }
+
+  .login__header {
+    padding-top: 76px;
   }
 
   .login__container {
-    margin: 165px 0 63px;
+    margin: 172px 0 63px;
+  }
+
+  .login__wrap {
+    padding-top: 16px;
   }
 }
 
@@ -145,7 +160,7 @@
   }
 
   .login__container {
-    margin: auto 0 25px;
+    margin: auto 0 28px;
   }
 
   .login__header {
