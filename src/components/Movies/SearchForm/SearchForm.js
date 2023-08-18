@@ -15,6 +15,7 @@ function SearchForm(props) {
             type="text"
             placeholder="Фильм"
             name="search__input"
+            required
           ></input>
           <button className="search__button" type="submit">
             Найти

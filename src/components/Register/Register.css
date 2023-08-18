@@ -1,10 +1,18 @@
+.section-register {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
 .register {
   display: flex;
   flex-direction: column;
   max-width: 400px;
   margin: 0 auto;
-  min-height: 700px;
+  height: 100%;
   padding: 0 15px;
+  width: 100%;
 }
 
 .register__header {
@@ -23,7 +31,10 @@
 }
 
 .register__main {
-  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  margin-bottom: auto;
 }
 
 .register__inner {
@@ -48,7 +59,6 @@
   border: 0;
   background-color: rgb(255, 255, 255);
   border-bottom: 1px solid #E8E8E8;
-  margin-bottom: 23px;
 }
 
 .register__input::placeholder {
@@ -61,7 +71,12 @@
 }
 
 .register__container {
-  margin: auto 0 63px;
+  margin-bottom: 71px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
 }
 
 .register__text-error {
@@ -70,7 +85,6 @@
   font-size: 11px;
   font-weight: 400;
   color: #FF004C;
-  padding-bottom: 20px;
   text-align: center;
 }
 
@@ -96,7 +110,6 @@
 .register__wrap {
   display: flex;
   justify-content: center;
-  padding-top: 24px;
   gap: 10px;
 }
 
@@ -129,10 +142,8 @@
 
 @media screen and (max-width: 768px) {
   .register {
-    max-width: 400px;
-    margin: auto;
-    height: 100vh;
-    padding-top: calc(19vh);
+    margin: 0 auto;
+    height: 70vh;
   }
 
   .register__header {
@@ -140,25 +151,18 @@
   }
 
   .register__container {
-    margin: 98px 0 63px;
+    margin-bottom: 81px;
   }
 
-  .register__wrap {
-    padding-top: 17px;
-    ;
-  }
 }
 
 @media screen and (max-width: 470px) {
   .register {
-    max-width: 400px;
-    margin: 0;
     height: 100vh;
     padding: 0 30px;
   }
 
   .register__header {
-    display: flex;
     align-items: center;
     padding-top: 55px;
   }
@@ -170,10 +174,14 @@
 
   .register__main {
     padding-top: 37px;
+    gap:30px;
   }
+  .register__inner-text {
+    padding-bottom: 0px;
+}
 
   .register__container {
-    margin: auto 0 28px;
+margin-bottom: 30px;
   }
 
   .register__submit {

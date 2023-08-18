@@ -1,5 +1,5 @@
 import React from "react";
-import imgMapPath from "../../../images/maps_header.png";
+import imgMapPath from "../../../images/maps_header.svg";
 import { Routes, Route, useNavigate, Link } from "react-router-dom";
 // import * as auth from "../utils/auth";
 

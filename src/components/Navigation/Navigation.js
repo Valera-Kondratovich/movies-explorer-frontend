@@ -37,9 +37,9 @@ function Navigation(props) {
         </ul>
       </nav>
 
-      <div className="burger-btn" onClick={props.burgerNav}>
+      <button type="button" className="burger-btn" onClick={props.burgerNav}>
         {props.nav ? <AiOutlineClose size={29} /> : <AiOutlineMenu size={29} />}
-      </div>
+      </button>
     </>
   );
 }

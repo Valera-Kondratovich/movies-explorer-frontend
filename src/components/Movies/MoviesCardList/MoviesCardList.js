@@ -14,10 +14,10 @@ function MoviesCardList(props) {
       <div className="card-list">
         <MoviesCard></MoviesCard>
         <MoviesCard></MoviesCard>
-        <MoviesCard></MoviesCard>
         {/* <MoviesCard></MoviesCard>
         <MoviesCard></MoviesCard>
-        <MoviesCard></MoviesCard>
+        <MoviesCard></MoviesCard> */}
+        {/* <MoviesCard></MoviesCard>
         <MoviesCard></MoviesCard>
         <MoviesCard></MoviesCard> */}
         {/* <MoviesCard></MoviesCard>

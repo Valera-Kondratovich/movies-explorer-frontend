@@ -1,17 +1,23 @@
+.section-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
 .login {
   display: flex;
   flex-direction: column;
   max-width: 400px;
   margin: 0 auto;
-  min-height: 700px;
-  padding: 0 15px;
-
+  width: 100%;
+  height: 99vh;
 }
 
 .login__header {
   display: flex;
   flex-direction: column;
-  padding-top: 70px;
+  padding-top: 65px;
 }
 
 .login__link {}
@@ -26,7 +32,10 @@
 }
 
 .login__main {
-  max-width: 400px;
+    display: flex;
+    margin-bottom: auto;
+    flex-direction: column;
+    gap: 22px;
 }
 
 .login__inner {
@@ -49,9 +58,8 @@
   line-height: 1.33;
   height: 25px;
   border: 0;
-  background-color: rgb(255, 255, 255);
+  background-color: transparent;
   border-bottom: 1px solid #E8E8E8;
-  margin-bottom: 23px;
 }
 
 .login__input::placeholder {
@@ -61,10 +69,17 @@
 .login__input:focus {
   outline: none;
   border-bottom: 1px solid #3456F3;
+
 }
 
 .login__container {
-  margin: auto 0 63px;
+    margin-bottom: 59px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 18px;
 }
 
 .login__text-error {
@@ -73,7 +88,6 @@
   font-size: 11px;
   font-weight: 400;
   color: #FF004C;
-  padding-bottom: 20px;
   text-align: center;
 }
 
@@ -100,7 +114,7 @@
 .login__wrap {
   display: flex;
   justify-content: center;
-  padding-top: 24px;
+  padding-bottom: 6px;
   gap: 10px;
 }
 
@@ -133,21 +147,15 @@
 
 @media screen and (max-width: 768px) {
   .login {
-    max-width: 400px;
-    height: 100vh;
-    padding-top: calc(19vh);
+    height: 56vh;
   }
 
   .login__header {
-    padding-top: 76px;
+    padding-top: 6px;
   }
 
   .login__container {
-    margin: 172px 0 63px;
-  }
-
-  .login__wrap {
-    padding-top: 16px;
+    margin-bottom: 0;
   }
 }
 
@@ -160,7 +168,7 @@
   }
 
   .login__container {
-    margin: auto 0 28px;
+    margin-bottom: 22px;
   }
 
   .login__header {
@@ -175,7 +183,10 @@
   }
 
   .login__main {
+    display: flex;
+    flex-direction: column;
     padding-top: 37px;
+    gap: 6px;
   }
 
   .login__submit {
