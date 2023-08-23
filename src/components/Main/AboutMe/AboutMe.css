@@ -106,7 +106,7 @@
   justify-content: space-between;
   align-items: center;
   height: 86px;
-  border-bottom: 1px solid #E8E8E8;
+
 }
 
 .about-me__text {
@@ -127,11 +127,6 @@
   height: 60px;
   justify-content: center;
   align-items: center;
-}
-
-.about-me_background-activ {
-  background-color: rgba(0, 0, 0, .3);
-  opacity: .5;
 }
 
 @media screen and (max-width: 860px) {

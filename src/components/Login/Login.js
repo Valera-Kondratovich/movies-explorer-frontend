@@ -36,11 +36,7 @@ function Login(props) {
   };
   return (
     <main className="main">
-      <section
-        className={`section-login ${
-          props.nav && "section-login_background-activ"
-        }`}
-      >
+      <section className="section-login">
         <form className="login" name="login" noValidate onSubmit={onLogin}>
           <div className="login__header">
             <Link className="login__link" to="/">
@@ -54,7 +50,7 @@ function Login(props) {
               <input
                 className="login__input"
                 type="email"
-                // placeholder="Email"
+                placeholder="Введите email"
                 name="email"
                 onChange={handleChange}
                 required
@@ -66,7 +62,7 @@ function Login(props) {
               <input
                 className="login__input"
                 type="password"
-                // placeholder="Пароль"
+                placeholder="Введите пароль"
                 name="password"
                 onChange={handleChange}
                 required

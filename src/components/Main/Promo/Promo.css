@@ -68,11 +68,6 @@
   opacity: .7;
 }
 
-.promo_background-activ {
-  background-color: rgba(0, 0, 0, .3);
-  opacity: .5;
-}
-
 @media screen and (max-width: 907px) {
   .promo__img-map {
     width: 250px;

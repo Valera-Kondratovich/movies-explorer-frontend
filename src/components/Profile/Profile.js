@@ -40,16 +40,13 @@ function Profile(props) {
       <Header
         login={props.login}
         burgerNav={props.burgerNav}
+        burgerNavInactive={props.burgerNavInactive}
         nav={props.nav}
       ></Header>
       <main className="main">
-        <section
-          className={`section-profile ${
-            props.nav && "section-profile_background-activ"
-          }`}
-        >
+        <section className="section-profile">
           <form
-            className={`profile ${props.nav && "profile_background-activ"}`}
+            className={`profile ${props.nav ? "profile_background-activ" : ""}`}
             name="profile"
             noValidate
             onSubmit={onLogin}
@@ -63,6 +60,7 @@ function Profile(props) {
                   type="text"
                   name="text"
                   onChange={handleChange}
+                  placeholder="Введите имя"
                   value="Виталий"
                   required
                 ></input>
@@ -74,6 +72,7 @@ function Profile(props) {
                   className="profile__input"
                   type="email"
                   name="email"
+                  placeholder="Введите email"
                   onChange={handleChange}
                   value="pochta@yandex.ru"
                   required

@@ -32,10 +32,10 @@
 }
 
 .login__main {
-    display: flex;
-    margin-bottom: auto;
-    flex-direction: column;
-    gap: 22px;
+  display: flex;
+  margin-bottom: auto;
+  flex-direction: column;
+  gap: 22px;
 }
 
 .login__inner {
@@ -73,13 +73,13 @@
 }
 
 .login__container {
-    margin-bottom: 59px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    gap: 18px;
+  margin-bottom: 59px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 18px;
 }
 
 .login__text-error {
@@ -137,12 +137,6 @@
 
 .login__wrap-link:hover {
   opacity: .7;
-}
-
-.section-login_background-activ {
-  background-color: rgba(0, 0, 0, .3);
-  ;
-  opacity: .5;
 }
 
 @media screen and (max-width: 768px) {

@@ -13,27 +13,64 @@ function App() {
   const location = useLocation();
   const [loggedIn, setLoggedIn] = useState(true);
   const [nav, setNav] = useState(false);
-  function handleBurgerMenu (){
-    setNav(!nav)
-  };
+  function handleBurgerMenu() {
+    setNav(!nav);
+  }
+  function handleBurgerMenuInactive() {
+    setNav(false);
+  }
   return (
     <>
       <Routes>
-        <Route path="/" element={<Main login={loggedIn} burgerNav={handleBurgerMenu} nav={nav} />}></Route>
-        <Route path="/signin" element={<Login nav={nav}/>}></Route>
-        <Route path="/signup" element={<Register nav={nav}/>}></Route>
-        <Route path="/profile" element={<Profile login={loggedIn} burgerNav={handleBurgerMenu} nav={nav}/>}></Route>
+        <Route
+          path="/"
+          element={
+            <Main
+              login={loggedIn}
+              burgerNav={handleBurgerMenu}
+              burgerNavInactive={handleBurgerMenuInactive}
+              nav={nav}
+            />
+          }
+        ></Route>
+        <Route path="/signin" element={<Login nav={nav} />}></Route>
+        <Route path="/signup" element={<Register nav={nav} />}></Route>
+        <Route
+          path="/profile"
+          element={
+            <Profile
+              login={loggedIn}
+              burgerNav={handleBurgerMenu}
+              burgerNavInactive={handleBurgerMenuInactive}
+              nav={nav}
+            />
+          }
+        ></Route>
         <Route
           path="/movies"
-          element={<Movies buttonDownloadStatus={true} login={loggedIn} burgerNav={handleBurgerMenu} nav={nav}/>}
+          element={
+            <Movies
+              buttonDownloadStatus={true}
+              login={loggedIn}
+              burgerNav={handleBurgerMenu}
+              burgerNavInactive={handleBurgerMenuInactive}
+              nav={nav}
+            />
+          }
         ></Route>
         <Route
           path="/saved-movies"
           element={
-            <SavedMovies buttonDownloadStatus={false} login={loggedIn} burgerNav={handleBurgerMenu} nav={nav}/>
+            <SavedMovies
+              buttonDownloadStatus={false}
+              login={loggedIn}
+              burgerNav={handleBurgerMenu}
+              burgerNavInactive={handleBurgerMenuInactive}
+              nav={nav}
+            />
           }
         ></Route>
-        <Route path="*" element={<PageNotFound nav={nav}/>} />
+        <Route path="*" element={<PageNotFound nav={nav} />} />
       </Routes>
     </>
   );

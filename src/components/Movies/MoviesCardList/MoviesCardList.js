@@ -6,11 +6,7 @@ import ButtonDownload from "../ButtonDownload/ButtonDownload";
 
 function MoviesCardList(props) {
   return (
-    <section
-      className={`section-cards ${
-        props.nav && "section-cards_background-activ"
-      }`}
-    >
+    <section className="section-cards">
       <div className="card-list">
         <MoviesCard></MoviesCard>
         <MoviesCard></MoviesCard>

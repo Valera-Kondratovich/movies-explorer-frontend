@@ -3,11 +3,7 @@ import { Routes, Route, useNavigate, Link } from "react-router-dom";
 
 function SearchForm(props) {
   return (
-    <section
-      className={`section-search ${
-        props.nav && "section-search_background-activ"
-      }`}
-    >
+    <section className="section-search">
       <form className="search" name="search" noValidate>
         <div className="search__wrap">
           <input

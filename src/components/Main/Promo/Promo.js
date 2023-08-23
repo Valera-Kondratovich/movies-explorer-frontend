@@ -5,7 +5,7 @@ import { Routes, Route, useNavigate, Link } from "react-router-dom";
 
 function Promo(props) {
   return (
-    <section className={`promo ${props.nav && "promo_background-activ"}`}>
+    <section className="promo">
       <div className="promo__wrap">
         <div className="promo__inner">
           <h1 className="promo__title">

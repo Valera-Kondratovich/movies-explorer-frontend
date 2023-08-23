@@ -56,11 +56,6 @@
   width: 20px;
 }
 
-.portfolio_background-activ {
-  background-color: rgba(0, 0, 0, .3);
-  opacity: .5;
-}
-
 @media screen and (max-width: 860px) {
   .portfolio {
     padding: 0 50px 111px;

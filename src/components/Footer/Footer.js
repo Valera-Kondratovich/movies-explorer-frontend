@@ -5,7 +5,7 @@ import { Routes, Route, useNavigate, Link } from "react-router-dom";
 function Footer(props) {
   return (
     <>
-      <footer className={`footer ${props.nav && "footer_background-activ"}`}>
+      <footer className="footer">
         <p className="footer__desc">
           Учебный проект Яндекс.Практикум х BeatFilm.
         </p>

@@ -6,9 +6,7 @@ import { Routes, Route, useNavigate, Link } from "react-router-dom";
 function AboutMe(props) {
   return (
     <>
-      <section
-        className={`about-me ${props.nav && "about-me_background-activ"}`}
-      >
+      <section className="about-me">
         <div className="about-me__row">
           <h2 className="about-me__title">Студент</h2>
         </div>

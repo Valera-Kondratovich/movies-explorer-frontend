@@ -6,9 +6,7 @@ import { Routes, Route, useNavigate, Link } from "react-router-dom";
 function Portfolio(props) {
   return (
     <>
-      <section
-        className={`portfolio ${props.nav && "portfolio_background-activ"}`}
-      >
+      <section className="portfolio">
         <h3 className="portfolio__title">Портфолио</h3>
         <ul className="portfolio__list">
           <li key={1} className="portfolio__wrap">

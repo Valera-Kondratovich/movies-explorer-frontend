@@ -1,5 +1,11 @@
 import React from "react";
-import { Routes, Route, useNavigate, Link } from "react-router-dom";
+import {
+  Routes,
+  Route,
+  useNavigate,
+  Link,
+  useLocation,
+} from "react-router-dom";
 import img from "../../../images/film.jpg";
 
 function MoviesCard(props) {
@@ -9,6 +15,9 @@ function MoviesCard(props) {
     srcc: "../../../images/film.jpg",
     time: "1000",
   };
+  const location = useLocation();
+  console.log(location.pathname);
+  console.log(location.pathname === "/saved-movies");
 
   return (
     <div className="card">
@@ -22,7 +31,9 @@ function MoviesCard(props) {
         <h2 className="card__title">{films.name}</h2>
         <div className="card__wrap">
           <button
-            className="card__button"
+            className={`card__button ${
+              location.pathname === "/saved-movies" ? "card__button-delite" : ""
+            }`}
             // className={cardLikeButtonClassName}
             type="button"
             // onClick={handleLikeClick}

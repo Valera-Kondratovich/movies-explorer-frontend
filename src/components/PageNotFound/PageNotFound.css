@@ -48,22 +48,19 @@
   opacity: .7;
 }
 
-.not-found_background-activ {
-  background-color: rgba(0, 0, 0, .3);
-  opacity: .5;
-}
-
 @media screen and (max-width: 768px) {
   .not-found {
     max-width: 400px;
-margin-top: auto;
+    margin-top: auto;
   }
+
   .not-found__wrap {
     margin-bottom: 185px;
-}
-.not-found__button {
-  margin-bottom: 222px;
-}
+  }
+
+  .not-found__button {
+    margin-bottom: 222px;
+  }
 }
 
 @media screen and (max-width: 470px) {
@@ -72,9 +69,11 @@ margin-top: auto;
     height: 100vh;
     margin-top: 382px;
   }
+
   .not-found__wrap {
     margin-bottom: 286px;
-}
+  }
+
   .not-found__text {
     font-size: 80px;
   }

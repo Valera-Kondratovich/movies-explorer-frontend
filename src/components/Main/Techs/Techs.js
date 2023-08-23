@@ -5,7 +5,7 @@ import { Routes, Route, useNavigate, Link } from "react-router-dom";
 function Techs(props) {
   return (
     <>
-      <section className={`techs ${props.nav && "techs_background-activ"}`}>
+      <section className="techs">
         <div className="techs__row">
           <h2 className="techs__title">Технологии</h2>
         </div>

@@ -36,11 +36,7 @@ function Register(props) {
   };
   return (
     <main className="main">
-      <section
-        className={`section-register ${
-          props.nav && "section-register_background-activ"
-        }`}
-      >
+      <section className="section-register">
         <form
           className="register"
           name="register"
@@ -59,7 +55,7 @@ function Register(props) {
               <input
                 className="register__input"
                 type="text"
-                // placeholder="Email"
+                placeholder="Введите имя"
                 name="text"
                 onChange={handleChange}
                 required
@@ -71,7 +67,7 @@ function Register(props) {
               <input
                 className="register__input"
                 type="email"
-                // placeholder="Email"
+                placeholder="Введите email"
                 name="email"
                 onChange={handleChange}
                 required
@@ -83,7 +79,7 @@ function Register(props) {
               <input
                 className="register__input"
                 type="password"
-                // placeholder="Пароль"
+                placeholder="Введите пароль"
                 name="password"
                 onChange={handleChange}
                 required

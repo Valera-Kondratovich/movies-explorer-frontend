@@ -32,7 +32,18 @@
   padding-left: 19px;
 }
 
-.card__wrap {}
+.card__button:hover {
+  opacity: .7;
+}
+
+.card__button-delite:hover {
+  background: url(../../../images/delite-card.svg) center no-repeat;
+}
+
+.card__wrap {
+  border-radius: 50%;
+  background-color: #F9F9F9;
+}
 
 .card__time {
   font-family: 'Inter', 'Arial', sans-serif;

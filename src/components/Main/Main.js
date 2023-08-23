@@ -13,6 +13,7 @@ function Main(props) {
       <Header
         login={props.login}
         burgerNav={props.burgerNav}
+        burgerNavInactive={props.burgerNavInactive}
         nav={props.nav}
       ></Header>
       <main className="main">

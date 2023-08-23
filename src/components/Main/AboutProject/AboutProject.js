@@ -5,12 +5,7 @@ import { Routes, Route, useNavigate, Link } from "react-router-dom";
 function AboutProject(props) {
   return (
     <>
-      <section
-        id="about-project"
-        className={`about-project ${
-          props.nav && "about-project_background-activ"
-        }`}
-      >
+      <section id="about-project" className="about-project">
         <div className="about-project__row">
           <h2 className="about-project__title">О проекте</h2>
         </div>

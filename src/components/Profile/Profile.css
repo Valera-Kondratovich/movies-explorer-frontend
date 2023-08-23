@@ -148,12 +148,6 @@
   color: #FF004D;
 }
 
-.section-profile_background-activ {
-  background-color: rgba(0, 0, 0, .3);
-  ;
-  opacity: .5;
-}
-
 @media screen and (max-width: 768px) {
   .profile {
     height: 68vh;

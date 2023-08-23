@@ -24,3 +24,7 @@
 @import url(./components/Preloader/Preloader.css);
 
 /* * { outline: 1px solid red; } */
+/* #root {
+  display: flex;
+  flex-direction: column;
+} */
