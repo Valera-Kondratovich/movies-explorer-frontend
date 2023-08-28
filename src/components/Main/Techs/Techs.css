@@ -1,0 +1,174 @@
+.techs {
+  padding: 0 70px 100px;
+  background-color: #F5F5F5;
+}
+
+.techs__row {
+  padding: 103px 0 19px;
+  border-bottom: 1px solid #000;
+}
+
+.techs__title {
+  font-family: 'Inter', 'Arial', sans-serif;
+  letter-spacing: -1px;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.33;
+  margin: 0;
+}
+
+.techs__inner {
+  max-width: 470px;
+  padding: 86px 0 102px;
+  margin: 0 auto;
+}
+
+.techs__sybtitle {
+  font-family: 'Inter', 'Arial', sans-serif;
+  letter-spacing: -2px;
+  font-size: 50px;
+  font-weight: 400;
+  line-height: 1.33;
+  text-align: center;
+  padding-bottom: 22px;
+  margin: 0;
+}
+
+.techs__desc {
+  font-family: 'Inter', 'Arial', sans-serif;
+  letter-spacing: -1px;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.33;
+  text-align: center;
+  margin: 0;
+}
+
+.techs__container {
+  display: flex;
+  justify-content: center;
+  max-width: 690px;
+  gap: 12px;
+  flex-wrap: nowrap;
+  margin: auto;
+  padding: 0;
+
+}
+
+.techs__text {
+  font-family: 'Inter', 'Arial', sans-serif;
+  letter-spacing: -1px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.33;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  width: 92px;
+  height: 59px;
+  background-color: #E8E8E8;
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 860px) {
+  .techs {
+    padding: 0 50px 100px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .techs__text {
+    width: 82px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .techs {
+    padding: 0 50px 90px;
+  }
+
+  .techs__row {
+    padding-top: 91px;
+  }
+
+  .techs__inner {
+    padding: 77px 0 83px;
+  }
+
+  .techs__sybtitle {
+    padding-bottom: 15px;
+  }
+
+  .techs__desc {
+    font-size: 13px;
+    max-width: 468px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .techs {
+    padding: 0 30px 90px;
+  }
+
+  .techs__container {
+    justify-content: start;
+    max-width: 400px;
+    flex-wrap: wrap;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .techs__title {
+    font-size: 18px;
+  }
+
+  .techs__sybtitle {
+    font-size: 40px;
+  }
+
+  .techs__container {
+    max-width: 300px;
+  }
+
+  .techs__desc {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .techs {
+    padding: 0 14px 60px;
+    background-color: #fff;
+
+  }
+
+  .techs__row {
+    padding-top: 50px;
+    padding-bottom: 26px;
+  }
+
+  .techs__title {
+    font-size: 18px;
+  }
+
+  .techs__inner {
+    padding: 59px 0 57px;
+  }
+
+  .techs__text {
+    height: 55px;
+  }
+
+  .techs__sybtitle {
+    font-size: 32px;
+  }
+
+  .techs__container {
+    max-width: 180px;
+  }
+
+  .techs__desc {
+    font-size: 11px;
+  }
+}

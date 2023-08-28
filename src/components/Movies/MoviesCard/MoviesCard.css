@@ -1,0 +1,61 @@
+.card {
+  max-width: 270px;
+}
+
+.card__img {
+  object-fit: cover;
+  width: 100%;
+}
+
+.card__group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #E8E8E8;
+  padding-bottom: 19px;
+}
+
+.card__title {
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.card__button {
+  width: 10px;
+  height: 10px;
+  flex-shrink: 0;
+  border: 0;
+  background: url(../../../images/like_color.svg) center no-repeat;
+  cursor: pointer;
+  margin-bottom: 6px;
+  padding-left: 19px;
+}
+
+.card__button:hover {
+  opacity: .7;
+}
+
+.card__button-delite:hover {
+  background: url(../../../images/delite-card.svg) center no-repeat;
+}
+
+.card__wrap {
+  border-radius: 50%;
+  background-color: #F9F9F9;
+}
+
+.card__time {
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  color: #A0A0A0;
+  display: block;
+  padding-top: 6px;
+}
+
+@media screen and (max-width: 768px) {
+  .card {
+    max-width: 339px;
+  }
+}

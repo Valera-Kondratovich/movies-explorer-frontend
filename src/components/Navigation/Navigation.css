@@ -1,0 +1,31 @@
+.burger-btn {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .burger-btn {
+    position: relative;
+    display: block;
+    z-index: 18;
+    right: -11px;
+    top: 3px;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+  }
+
+  .burger-btn_color {
+    color: #fff;
+  }
+
+  .burger-btn_color-close {
+    color: #000;
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .burger-btn {
+    right: -6px;
+    top: -6px;
+  }
+}

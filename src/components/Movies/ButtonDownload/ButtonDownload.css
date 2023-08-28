@@ -1,0 +1,47 @@
+.btn-wrap {
+  padding: 59px 0 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-down {
+  font-family: 'Inter', 'Arial', sans-serif;
+  text-align: center;
+  font-weight: 500;
+  max-width: 315px;
+  height: 36px;
+  font-size: 12px;
+  border: 0;
+  flex-grow: 1;
+  opacity: 1;
+  transition: opacity .2s linear;
+  background-color: #F9F9F9;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-down:hover {
+  opacity: .7;
+}
+
+@media screen and (max-width: 768px) {
+  .btn-wrap {
+    padding: 59px 0 84px;
+  }
+
+  .btn-down {
+    max-width: 310px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .btn-wrap {
+    height: 90px;
+    padding: 31px 0 115px;
+  }
+
+  .btn-down {
+    max-width: 245px;
+  }
+}

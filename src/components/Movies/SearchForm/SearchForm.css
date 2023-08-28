@@ -1,0 +1,175 @@
+.search {
+  box-sizing: border-box;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 70px 70px 0;
+}
+
+.search__wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #E8E8E8;
+  padding-bottom: 10px;
+}
+
+.search__input {
+  border: none;
+  height: 34px;
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-size: 28px;
+  font-weight: 500;
+  flex-grow: 1;
+}
+
+.search__input:focus {
+  outline: 1px solid #3456F3;
+}
+
+.search__input::placeholder {
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-size: 28px;
+  font-weight: 500;
+  color: #A0A0A0;
+}
+
+.search__button {
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.6;
+  background-color: #3456F3;
+  border: none;
+  border-radius: 48px;
+  height: 34px;
+  width: 59px;
+  color: #fff;
+  opacity: 1;
+  cursor: pointer;
+  transition: opacity .2s linear;
+}
+
+.search__button:hover {
+  opacity: .7;
+}
+
+.search__inner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-top: 31px;
+}
+
+.search__switch {
+  position: relative;
+  display: inline-block;
+  width: 34px;
+  height: 14px;
+}
+
+.search__switch:hover {
+  opacity: .7;
+}
+
+.search__checkbox {
+  display: none;
+}
+
+.search__slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 20px;
+  background-color: #EBEBEB;
+  transition: .4s;
+}
+
+.search__slider::before {
+  position: absolute;
+  content: "";
+  height: 10px;
+  width: 10px;
+  left: 4px;
+  bottom: 2px;
+  border-radius: 50%;
+  background-color: #F5F5F5;
+  transition: .4s;
+}
+
+.search__checkbox:checked+.search__slider {
+  background-color: #2BE080;
+}
+
+.search__checkbox:checked+.search__slider::before {
+  transform: translateX(16px);
+}
+
+.search__short-films {
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.9;
+  padding-left: 8px;
+}
+
+@media screen and (max-width: 768px) {
+  .search {
+    padding: 78px 28px 0;
+  }
+
+  .search__inner {
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+  }
+}
+
+@media screen and (max-width: 615px) {
+  .search {
+    padding: 78px 28px 0;
+  }
+}
+
+@media screen and (max-width: 510px) {
+  .search__input {
+    font-size: 22px;
+  }
+
+  .search__input::placeholder {
+    font-size: 22px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .search__input {
+    font-size: 18px;
+  }
+
+  .search__input::placeholder {
+    font-size: 18px;
+  }
+
+}
+
+@media screen and (max-width: 360px) {
+  .search {
+    padding: 84px 14px 0;
+  }
+
+  .search__input {
+    max-width: 220px;
+  }
+
+  .search__inner {
+    justify-content: center;
+    gap: 15px;
+    padding-top: 37px;
+  }
+
+  .search__short-films {
+    font-size: 11px;
+    padding: 0;
+  }
+}
