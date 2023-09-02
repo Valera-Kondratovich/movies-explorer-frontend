@@ -1,39 +1,117 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-// import * as auth from "../utils/auth";
 import logoPath from "../../images/logo.svg";
+import * as auth from "../../utils/Auth"
 
-function Login(props) {
+function Login({handleLogin}) {
+  const navigate = useNavigate();
+
+  // стейт хранит ошибки приходящие с сервера
+  const [errorServerMessage, setErrorServerMessage] = useState('')
+
+  //будем проверять что ввел пользователь
+  const [emailInput, setEmailInput] = useState('');
+  const [passwordInput, setPasswordInput] = useState('');
+
+  // следим за состоянием стоит ли курсор в инпуте
+  const [emailInputFocus, setEmailInputFocus] = useState(false);
+  const [passwordInputFocus, setPasswordInputFocus] = useState(false);
+
+  //ошибка по умолчанию если инпуты пустые
+  const [emailError, setEmailError] = useState('Email не может быть пустым');
+  const [passwordError, setPasswordError] = useState('Пароль не может быть пустым');
+
+  //состояние валидна ли форма
+  const [formValid, setFormValid] = useState(false)
+
+  //стейт хранит данные пользователя приходящие с сервера
   const [formValue, setFormValue] = useState({
     email: "",
     password: "",
   });
-  const navigate = useNavigate();
 
+  // функция сохраняет данные о пользователе полученные с сервера
   const handleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
     setFormValue({
       ...formValue,
       [name]: value,
-    });
+    })
   };
+
 
   const onLogin = (e) => {
     e.preventDefault();
-    const email = formValue.email;
-    const password = formValue.password;
-    // auth.login(password, email)
-    // .then(res => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`))
-    // .then((res)=> {
-    //     handleUserData(res);
-    //     handleLogin(email);
-    //     handleCardsData();
-    //     navigate("/")
-    //   // }
-    //   })
-    // .catch(err=> console.log(err))
+       const email = formValue.email;
+       const password = formValue.password;
+    auth.login(password, email)
+    .then(res => res.ok ? res.json() : res.json().then(res=> {throw res}))
+    .then((dataUser)=> {
+        handleLogin(dataUser);
+        navigate("/movies")
+      })
+    .catch(err=> {console.log(err);
+      setErrorServerMessage(err.message);
+    })
   };
+
+//если пользователь поставил курсор с инпута меняем стейт
+  const focusHandler = (e) => {
+    // eslint-disable-next-line default-case
+    switch (e.target.name) {
+      case 'email':
+        setEmailInputFocus(true)
+        break
+      case 'password':
+        setPasswordInputFocus(true)
+        break
+    }
+  }
+
+//валидируем что вводит пользователь
+  const emailHandler = (e) => {
+    focusHandler(e);
+    setEmailInput(e.target.value)
+    const re = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+    if (!re.test(String(e.target.value).toLowerCase())) {
+      setEmailError('Ввели не корректный email')
+      if (!e.target.value) {
+        setEmailError('Email не может быть пустым')
+      }
+    }
+    else {
+      setEmailError('');
+      handleChange(e);
+    }
+  }
+
+  const passwordHandler = (e) => {
+    focusHandler(e);
+    setPasswordInput(e.target.value)
+    if (e.target.value.length < 2) {
+      setPasswordError('Пароль должен быть длинее 1 символа')
+      if (!e.target.value) {
+        setPasswordError('Пароль не может быть пустым')
+      }
+    }
+    else {
+      setPasswordError('');
+      handleChange(e);
+    }
+  }
+
+  useEffect(()=> {
+if (emailError || passwordError) {
+  setFormValid(false)
+}
+else {
+  setFormValid(true)
+
+}
+
+  }, [emailError, passwordError])
+
   return (
     <main className="main">
       <section className="section-login">
@@ -48,32 +126,36 @@ function Login(props) {
             <div className="login__inner">
               <label className="login__inner-text">E-mail</label>
               <input
+                value={emailInput}
                 className="login__input"
                 type="email"
                 placeholder="Введите email"
                 name="email"
-                onChange={handleChange}
+                onChange={e => emailHandler(e)}
                 required
               ></input>
+              <span className={`login__input-error ${(emailInputFocus && emailError) ? "login__input-error_visible" : ""}`}>{emailError}</span>
             </div>
 
             <div className="login__inner">
               <label className="login__inner-text">Пароль</label>
               <input
+              value={passwordInput}
                 className="login__input"
                 type="password"
                 placeholder="Введите пароль"
                 name="password"
-                onChange={handleChange}
+                onChange={passwordHandler}
                 required
               ></input>
+              <span className={`login__input-error ${(passwordInputFocus && passwordError) ? "login__input-error_visible" : ""}`}>{passwordError}</span>
             </div>
           </div>
           <div className="login__container">
-            <span className="login__text-error login__text-error_active">
-              Текст ошибки
+            <span className="login__text-error">
+              {errorServerMessage}
             </span>
-            <button className="login__submit" type="submit">
+            <button disabled={!formValid} className={`login__submit ${!formValid ? 'login__submit_disabled' : ''}`} type="submit">
               Войти
             </button>
             <div className="login__wrap">

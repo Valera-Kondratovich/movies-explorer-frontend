@@ -16,8 +16,6 @@ function MoviesCard(props) {
     time: "1000",
   };
   const location = useLocation();
-  console.log(location.pathname);
-  console.log(location.pathname === "/saved-movies");
 
   return (
     <div className="card">
