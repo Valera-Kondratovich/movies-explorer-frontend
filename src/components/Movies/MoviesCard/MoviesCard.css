@@ -1,7 +1,9 @@
 .card {
   max-width: 270px;
 }
-
+.card__link:hover{
+  opacity: .7;
+}
 .card__img {
   object-fit: cover;
   width: 100%;

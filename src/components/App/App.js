@@ -55,13 +55,15 @@ function App() {
 //  const [movies, setMovies] = useState([]);
  const [saveMovies, setSaveMovires] = useState([]);
 
-
+// стейт всех фильмов из локал сторедж
+const [movies, setFilms] = useState('');
 
  useEffect(() =>{
  if (loggedIn) {
    moviesApi.getAllMovies()
    .then((movies) => {
-    localStorage.setItem('movies', JSON.stringify(movies))})
+    localStorage.setItem('movies', JSON.stringify(movies))
+    setFilms(JSON.parse(localStorage.getItem('movies')))})
    .catch((err) => {
     console.log(err)
     setErrorServerMessage(err)
@@ -109,6 +111,7 @@ function App() {
               burgerNav={handleBurgerMenu}
               burgerNavInactive={handleBurgerMenuInactive}
               nav={nav}
+              movies={movies}
             />
           }
         ></Route>

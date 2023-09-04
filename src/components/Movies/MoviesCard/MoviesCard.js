@@ -6,27 +6,24 @@ import {
   Link,
   useLocation,
 } from "react-router-dom";
-import img from "../../../images/film.jpg";
+
 
 function MoviesCard(props) {
-  const films = {
-    name: "33 слова",
-    likes: true,
-    srcc: "../../../images/film.jpg",
-    time: "1000",
-  };
+
+
   const location = useLocation();
 
   return (
     <div className="card">
+      <a className="card__link" target="_blank" rel="noreferrer" href={props.trailerLink}>
       <img
         className="card__img"
-        src={img}
-        alt={`${films.name}`}
-        // onClick={handleClick}
+        src={`https://api.nomoreparties.co${props.image}`}
+        alt={`Название фильма: ${props.nameRU}`}
       />
+      </a>
       <div className="card__group">
-        <h2 className="card__title">{films.name}</h2>
+        <h2 className="card__title">{props.name}</h2>
         <div className="card__wrap">
           <button
             className={`card__button ${
@@ -38,7 +35,7 @@ function MoviesCard(props) {
           />
         </div>
       </div>
-      <span className="card__time">{films.time}</span>
+      <span className="card__time">{(props.duration<60) ? `${props.duration % 60}м` : `${Math.floor(props.duration / 60)}ч ${props.duration % 60}м`}</span>
     </div>
   );
 }

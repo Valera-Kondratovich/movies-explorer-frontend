@@ -55,19 +55,10 @@ const movieHandler = (e) => {
     }
     else {
       setMovieError('');
-      const searchValue = {short, keyword}
-      props.searchValue(searchValue);
+      console.log(keyword);
+      props.handleKeyword(keyword);
     }
   };
-
-const [short, setShort] =useState(false);
-
-const handleShort = () => {
-  setShort(!short)
-  
-  console.log(short);
-}
-
 
 
   return (
@@ -92,7 +83,7 @@ const handleShort = () => {
         <span className={`search__input-error ${movieError ? "search__input-error_visible" : ""}`}>{movieError}</span>
         <div className="search__inner">
           <label className="search__switch">
-            <input className="search__checkbox" onChange={handleShort} type="checkbox" checked={short}></input>
+            <input name="short__input" className="search__checkbox"  onChange={props.handleShort} type="checkbox" checked={props.short}></input>
             <span className="search__slider"></span>
           </label>
           <span className="search__short-films">Короткометражки</span>
