@@ -1,4 +1,5 @@
 const urlApi = 'http://localhost:3000'; //https://api.mesto.kondratovich.nomoredomains.work указать адрес сервера бекенд
+const urlMoviesApi = 'https://api.nomoreparties.co';
  class MainApi {
   constructor(config) {
     this._url = config.url;
@@ -25,6 +26,45 @@ const urlApi = 'http://localhost:3000'; //https://api.mesto.kondratovich.nomored
       headers: this._headers
     })
   }
+//используется
+  saveMovie({ id, nameRU, nameEN, director, country, year, duration, description, trailerLink, image, }) {
+    return this._request(`${this._url}/movies`, {
+      credentials: 'include',
+      method: 'POST',
+      headers: this._headers,
+      body: JSON.stringify({
+        country,
+        director,
+        duration,
+        year,
+        description,
+        image: `${urlMoviesApi}${image.url}`,
+        trailerLink: trailerLink,
+        thumbnail: `${urlMoviesApi}${image.formats.thumbnail.url}`,
+        movieId: id,
+        nameRU,
+        nameEN})
+    })
+  }
+
+//используется
+  getMovies(){
+    return this._request(`${this._url}/movies`, {
+      credentials: 'include',
+      method: 'GET',
+      headers: this._headers
+    })
+  }
+
+  //используется
+  delMovie(idMovie) {
+    return this._request(`${this._url}/movies/${idMovie}`, {
+      credentials: 'include',
+      method: 'DELETE',
+      headers: this._headers,
+    })
+  }
+
 
   patchUserData(data) {
     return this._request(`${this._url}/users/me`, {
@@ -69,13 +109,7 @@ else {
     })
   }
 
-  delCard(idImage) {
-    return this._request(`${this._url}/cards/${idImage}`, {
-      credentials: 'include',
-      method: 'DELETE',
-      headers: this._headers,
-    })
-  }
+
 
   patchUserAvatar(urlAvatar) {
     return this._request(`${this._url}/users/me/avatar`, {

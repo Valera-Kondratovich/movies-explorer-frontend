@@ -7,23 +7,25 @@ import Footer from "../Footer/Footer";
 import Preloader from "../Preloader/Preloader";
 
 function Movies(props) {
-// все фильмы из локал сторедж
-const movies= JSON.parse(localStorage.getItem('movies'));
+//счетчик на который будем умножать , что бы увеличить массив отображаемых фильмов
+const [count, setCount] = useState(0)
 
-//стейт найденных фильмов
- const [foundMovies, setFoundMovies] = useState(JSON.parse(localStorage.getItem('foundMovies')), [])
-console.log(foundMovies);
+//функция которая увеличивает счетчик при нажатии еще
+function counterIncrease() {
+  setCount(count+1)
+}
 
+//стейт найденных фильмов по ключевому слову НУЖНО ВЫВЕСТИ НА УРОВЕНЬ ВЫШЕ
+ const [foundMovies, setFoundMovies] = useState((JSON.parse(localStorage.getItem('foundMovies')) !== null) ? JSON.parse(localStorage.getItem('foundMovies')) : [])
 
-// const qqq= JSON.parse(localStorage.getItem('foundMovies'))
-// console.log(typeof qqq);
-// console.log(qqq);
- //стейт который хранит поисковый запрос
- const [keyword, setKeyword] = useState('')
+ //стейт который хранит поисковый запрос ключевые слова
+ const [keyword, setKeyword] = useState((JSON.parse(localStorage.getItem('keyword'))!==null) ? JSON.parse(localStorage.getItem('keyword')) : '')
 
  //функция которая обновляет стейт посквого запроса
  function handleKeyword (keywords) {
   setKeyword(keywords)
+  localStorage.setItem('keyword', JSON.stringify(keywords))
+  setCount(0)
  }
 
 //стейт чекбокса
@@ -35,48 +37,30 @@ function handleShort () {
   localStorage.setItem('chekbox', JSON.stringify(!short))
 }
 
+
 useEffect(()=>{
-  if (keyword===''){ console.log('dsdassdasdasdasdsa')}
-  else {
-    console.log(short);
+if(keyword==='') {
+  setFoundMovies([])
+}
+else {
     if (short) {
-    const resultat = movies.filter(({ nameRU, nameEN, duration }) => {
+    const resultat = props.movies.filter(({ nameRU, nameEN, duration }) => {
       return ((nameRU.toLowerCase().includes(keyword.toLowerCase()) ||
           nameEN.toLowerCase().includes(keyword.toLowerCase()))
           && (duration <= 40)
           )
         })
-        const widthScreen = window.innerWidth;
-        console.log(widthScreen);
         localStorage.setItem('foundMovies', JSON.stringify(resultat))
           setFoundMovies(resultat)
   }
   else{
-  const resultat = movies.filter(({ nameRU, nameEN }) => {
+  const resultat = props.movies.filter(({ nameRU, nameEN }) => {
     return ((nameRU.toLowerCase().includes(keyword.toLowerCase()) ||
         nameEN.toLowerCase().includes(keyword.toLowerCase())))})
         localStorage.setItem('foundMovies', JSON.stringify(resultat))
         setFoundMovies(resultat)
-}}
-}, [short, keyword])
-
-
-
-//   function search (keyword) {
-//     console.log(keyword);
-// if (short) {
-
-// }
-// else {
-// console.log(movies);
-
-// const resultat = movies.filter(({ nameRU, nameEN }) => {
-//   return ((nameRU.toLowerCase().includes(keyword.toLowerCase()) ||
-//       nameEN.toLowerCase().includes(keyword.toLowerCase())))})
-//       setFoundMovies(resultat)
-// console.log(resultat);
-// }
-//   }
+}}}
+, [short, keyword])
 
   return (
     <>
@@ -91,7 +75,19 @@ useEffect(()=>{
         <MoviesCardList
           nav={props.nav}
           buttonDownloadStatus={props.buttonDownloadStatus}
-          movies={foundMovies}
+          //массив найденных фильмов по ключевым словам
+          foundMovies={foundMovies}
+          //массив сохраненных фильмов пользователем
+          saveMovies={props.saveMovies}
+          //функция увеличения счетчика
+          counterIncrease={counterIncrease}
+          //сам счетчик
+          count={count}
+          //функция сохранения фильма
+          handleSaveMovie={props.handleSaveMovie}
+          //функция удаления фильма
+          handleDeleteMovie={props.handleDeleteMovie}
+
         ></MoviesCardList>
       </main>
       <Footer nav={props.nav}></Footer>

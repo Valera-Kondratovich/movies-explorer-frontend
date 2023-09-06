@@ -49,30 +49,64 @@ function App() {
 
   function handleLogOut() {
     setCurrentUser({});
+    setMovies([]);
+    setSaveMovies([]);
+    localStorage.setItem('movies', JSON.stringify([]))
+
     setLoggedIn(false)
   }
  const [errorServerMessage, setErrorServerMessage] = useState('');
-//  const [movies, setMovies] = useState([]);
- const [saveMovies, setSaveMovires] = useState([]);
 
 // стейт всех фильмов из локал сторедж
-const [movies, setFilms] = useState('');
+const [movies, setMovies] = useState((JSON.parse(localStorage.getItem('movies')) !== null) ? JSON.parse(localStorage.getItem('movies')): []);
+//стейт сохраненных фильмов пользователя
+const [saveMovies, setSaveMovies] = useState([])
 
  useEffect(() =>{
  if (loggedIn) {
    moviesApi.getAllMovies()
    .then((movies) => {
     localStorage.setItem('movies', JSON.stringify(movies))
-    setFilms(JSON.parse(localStorage.getItem('movies')))})
+    setMovies(movies)
+   })
    .catch((err) => {
     console.log(err)
     setErrorServerMessage(err)
   })
+  mainApi.getMovies()
+  .then((movies)=>{
+    localStorage.setItem('saveMovies', JSON.stringify(movies))
+    setSaveMovies(movies)
+  })
+
  }
  else {
   localStorage.setItem('movies', JSON.stringify([]))
+  localStorage.setItem('saveMovies', JSON.stringify([]))
  }
 }, [loggedIn])
+
+function handleSaveMovie (movie) {
+mainApi.saveMovie(movie)
+.then((movie)=>{
+  setSaveMovies(...saveMovies, movies)
+})
+.catch((err) => {
+  console.log(err)
+  setErrorServerMessage(err)
+})
+};
+
+function handleDeleteMovie (movie) {
+const idMovie = movie._id;
+mainApi.delMovie(idMovie)
+.then(()=> setSaveMovies([...saveMovies.filter(element => element._id !== idMovie)]))
+.catch((err) => {
+  console.log(err)
+  setErrorServerMessage(err)
+})
+}
+
   return (
     <>
     <UserContext.Provider value={currentUser}>
@@ -111,7 +145,12 @@ const [movies, setFilms] = useState('');
               burgerNav={handleBurgerMenu}
               burgerNavInactive={handleBurgerMenuInactive}
               nav={nav}
+              //массив всех фильмов
               movies={movies}
+              //массив сохраненных пользователем фильмов
+              saveMovies={saveMovies}
+              handleSaveMovie={handleSaveMovie}
+              handleDeleteMovie={handleDeleteMovie}
             />
           }
         ></Route>
@@ -124,6 +163,9 @@ const [movies, setFilms] = useState('');
               burgerNav={handleBurgerMenu}
               burgerNavInactive={handleBurgerMenuInactive}
               nav={nav}
+              //массив сохраненных пользователем фильмов
+              movies={saveMovies}
+              handleDeleteMovie={handleDeleteMovie}
             />
           }
         ></Route>

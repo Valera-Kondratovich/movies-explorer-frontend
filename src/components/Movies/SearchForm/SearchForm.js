@@ -6,21 +6,16 @@ function SearchForm(props) {
     //будем проверять что ввел пользователь
     const [movieInput, setMovieInput] = useState('');
 
-    // следим за состоянием стоит ли курсор в инпуте
-    const [movieInputFocus, setMovieInputFocus] = useState(false);
-
     //ошибка по умолчанию если инпуты пустые
     const [movieError, setMovieError] = useState('');
 
-    //состояние валидна ли форма
-    const [formValid, setFormValid] = useState(false)
 
     //меняем стейт если пользователь поставил курсор в инпут
 const focusHandler = (e) => {
   // eslint-disable-next-line default-case
   switch (e.target.name) {
     case ('search__input'):
-      setMovieInputFocus(true)
+
       break;
   }
 }
@@ -29,33 +24,15 @@ const focusHandler = (e) => {
 const movieHandler = (e) => {
   focusHandler(e);
   setMovieInput(e.target.value)
-    handleChange(e)
 }
-
-  const [formValue, setFormValue] = useState({
-    search__input: "",
-  });
-
-  const handleChange = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
-    setFormValue({
-      ...formValue,
-      [name]: value,
-    });
-  };
-
-
-
   const onSearch = (e) => {
     e.preventDefault();
-    const keyword = formValue.search__input;
+    const keyword = movieInput;
     if (!keyword) {
       setMovieError('Нужно ввести ключевое слово')
     }
     else {
       setMovieError('');
-      console.log(keyword);
       props.handleKeyword(keyword);
     }
   };
