@@ -29,7 +29,7 @@ function counterIncrease() {
  }
 
 //стейт чекбокса
-const [short, setShort] = useState(JSON.parse(localStorage.getItem('chekbox')),false)
+const [short, setShort] = useState((JSON.parse(localStorage.getItem('chekbox'))!==null) ? JSON.parse(localStorage.getItem('chekbox')) : false)
 
 //функция меняет состояние чекбокса
 function handleShort () {
@@ -60,7 +60,7 @@ else {
         localStorage.setItem('foundMovies', JSON.stringify(resultat))
         setFoundMovies(resultat)
 }}}
-, [short, keyword])
+, [short, keyword, props.movies])
 
   return (
     <>
@@ -71,7 +71,7 @@ else {
         nav={props.nav}
       ></Header>
       <main className="main">
-        <SearchForm nav={props.nav} handleKeyword={handleKeyword} handleShort={handleShort} short={short}></SearchForm>
+        <SearchForm nav={props.nav} handleKeyword={handleKeyword} handleShort={handleShort} short={short} keyword={keyword}></SearchForm>
         <MoviesCardList
           nav={props.nav}
           buttonDownloadStatus={props.buttonDownloadStatus}
@@ -87,7 +87,6 @@ else {
           handleSaveMovie={props.handleSaveMovie}
           //функция удаления фильма
           handleDeleteMovie={props.handleDeleteMovie}
-
         ></MoviesCardList>
       </main>
       <Footer nav={props.nav}></Footer>

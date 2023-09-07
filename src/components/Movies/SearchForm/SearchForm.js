@@ -4,7 +4,7 @@ import { Routes, Route, useNavigate, Link } from "react-router-dom";
 function SearchForm(props) {
 
     //будем проверять что ввел пользователь
-    const [movieInput, setMovieInput] = useState('');
+    const [movieInput, setMovieInput] = useState((JSON.parse(localStorage.getItem('keyword'))!==null) ? JSON.parse(localStorage.getItem('keyword')) : '');
 
     //ошибка по умолчанию если инпуты пустые
     const [movieError, setMovieError] = useState('');

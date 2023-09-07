@@ -69,11 +69,17 @@
   text-decoration: none;
   opacity: 1;
   transition: opacity .2s linear;
+  color:#000
 }
 
 .about-me__github:visited {
   color: #000;
 }
+
+.about-me__github:active {
+  color: #000;
+}
+
 
 .about-me__github:hover {
   opacity: .7;

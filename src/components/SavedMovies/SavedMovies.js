@@ -10,7 +10,7 @@ function SavedMovies(props) {
 //const [count, setCount] = useState(0)
 
 //стейт найденных фильмов по ключевому слову НУЖНО ВЫВЕСТИ НА УРОВЕНЬ ВЫШЕ
- const [foundMovies, setFoundMovies] = useState((JSON.parse(localStorage.getItem('foundFromSaveMovies')) !== null) ? JSON.parse(localStorage.getItem('foundFromSaveMovies')) : [])
+ const [foundMoviess, setFoundMoviess] = useState((JSON.parse(localStorage.getItem('foundFromSaveMovies')) !== null) ? JSON.parse(localStorage.getItem('foundFromSaveMovies')) : [])
 
 //стейт который хранит поисковый запрос ключевые слова
 const [keyword, setKeyword] = useState((JSON.parse(localStorage.getItem('keywordsSavedMovies'))!==null) ? JSON.parse(localStorage.getItem('keywordsSavedMovies')) : '')
@@ -23,7 +23,7 @@ function handleKeyword (keywords) {
 }
 
 //стейт чекбокса
-const [short, setShort] = useState(JSON.parse(localStorage.getItem('chekboxSavedMovies')),false)
+const [short, setShort] = useState((JSON.parse(localStorage.getItem('chekboxSavedMovies'))!==null) ? JSON.parse(localStorage.getItem('chekboxSavedMovies')) : false)
 
 //функция меняет состояние чекбокса
 function handleShort () {
@@ -33,11 +33,11 @@ function handleShort () {
 
 
 useEffect(()=>{
-if(keyword==='') {
-  //если в инпуте нет ключевого слова, передаю весь массив сохраненных фильмов
-  setFoundMovies(props.movies)
-}
-else {
+// if(!keyword) {
+//   //если в инпуте нет ключевого слова, передаю весь массив сохраненных фильмов
+//   return setFoundMoviess(props.movies)
+// }
+
     if (short) {
     const resultat = props.movies.filter(({ nameRU, nameEN, duration }) => {
       return ((nameRU.toLowerCase().includes(keyword.toLowerCase()) ||
@@ -45,17 +45,21 @@ else {
           && (duration <= 40)
           )
         })
-        localStorage.setItem('foundMovies', JSON.stringify(resultat))
-          setFoundMovies(resultat)
+        localStorage.setItem('foundFromSaveMovies', JSON.stringify(resultat))
+        setFoundMoviess(resultat)
   }
   else{
   const resultat = props.movies.filter(({ nameRU, nameEN }) => {
     return ((nameRU.toLowerCase().includes(keyword.toLowerCase()) ||
         nameEN.toLowerCase().includes(keyword.toLowerCase())))})
-        localStorage.setItem('foundMovies', JSON.stringify(resultat))
-        setFoundMovies(resultat)
-}}}
-, [short, keyword])
+        localStorage.setItem('foundFromSaveMovies', JSON.stringify(resultat))
+        setFoundMoviess(resultat)
+        console.log(resultat);
+        console.log(foundMoviess);
+}}
+, [short, keyword, props.movies])
+
+console.log(foundMoviess);
 
   return (
     <>
@@ -66,12 +70,12 @@ else {
         nav={props.nav}
       ></Header>
       <main className="main">
-        <SearchForm nav={props.nav} handleKeyword={handleKeyword} handleShort={handleShort} short={short}></SearchForm>
+        <SearchForm nav={props.nav} handleKeyword={handleKeyword} handleShort={handleShort} short={short} keyword={keyword} ></SearchForm>
         <MoviesCardList
           nav={props.nav}
           buttonDownloadStatus={props.buttonDownloadStatus}
           //передаю список сохраненных фильмов
-          foundMovies={foundMovies}
+          foundMovies={foundMoviess}
           handleDeleteMovie={props.handleDeleteMovie}
         ></MoviesCardList>
       </main>

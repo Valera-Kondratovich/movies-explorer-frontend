@@ -38,7 +38,7 @@ const urlMoviesApi = 'https://api.nomoreparties.co';
         duration,
         year,
         description,
-        image: `${urlMoviesApi}${image.url}`,
+        image: image.url,
         trailerLink: trailerLink,
         thumbnail: `${urlMoviesApi}${image.formats.thumbnail.url}`,
         movieId: id,

@@ -3,7 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import logoPath from "../../images/logo.svg";
 import * as auth from "../../utils/Auth"
 
-function Register({handleLogin}) {
+function Register(props) {
   // стейт хранит ошибки приходящие с сервера
   const [errorServerMessage, setErrorServerMessage] = useState('');
 
@@ -112,16 +112,8 @@ const passwordHandler = (e) => {
     const email = formValue.email;
     const password = formValue.password;
     const name = formValue.name;
-    auth.register(name, password, email)
-    .then(res => res.ok ? res.json() : res.json().then(res => {throw res}))
-    .then((dataUser)=> {
+    props.handleSignUp(name, password, email)
 
-      handleLogin(dataUser);
-      navigate("/movies");
-    })
-    .catch((err)=> {console.log(err);
-      setErrorServerMessage(err.message)
-    })
   };
 
   useEffect (()=> {

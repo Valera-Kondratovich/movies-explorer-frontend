@@ -10,6 +10,8 @@ import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import { UserContext } from "../Context/UserContext/UserContext";
 import mainApi from "../../utils/MainApi";
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import * as auth from "../../utils/Auth"
 
 function App() {
   const location = useLocation();
@@ -33,8 +35,10 @@ function App() {
       .catch((err) => console.log(err));
   }
   function handleLogin(dataUser) {
+    // tokenCheck()
     setLoggedIn(true);
     setCurrentUser(dataUser);
+    navigate("/movies");
   };
 
 
@@ -52,6 +56,7 @@ function App() {
     setMovies([]);
     setSaveMovies([]);
     localStorage.setItem('movies', JSON.stringify([]))
+    localStorage.setItem('saveMovies', JSON.stringify([]))
 
     setLoggedIn(false)
   }
@@ -86,10 +91,18 @@ const [saveMovies, setSaveMovies] = useState([])
  }
 }, [loggedIn])
 
+useEffect(() => {
+  localStorage.setItem('movies', JSON.stringify(movies));
+}, [movies]);
+
+useEffect(() => {
+  localStorage.setItem('saveMovies', JSON.stringify(saveMovies));
+}, [saveMovies]);
+
 function handleSaveMovie (movie) {
 mainApi.saveMovie(movie)
 .then((movie)=>{
-  setSaveMovies(...saveMovies, movies)
+  setSaveMovies([...saveMovies, movie])
 })
 .catch((err) => {
   console.log(err)
@@ -100,11 +113,40 @@ mainApi.saveMovie(movie)
 function handleDeleteMovie (movie) {
 const idMovie = movie._id;
 mainApi.delMovie(idMovie)
-.then(()=> setSaveMovies([...saveMovies.filter(element => element._id !== idMovie)]))
+.then(()=> {
+    setSaveMovies([...saveMovies.filter(movie => movie._id !== idMovie)]);
+  })
+
 .catch((err) => {
   console.log(err)
   setErrorServerMessage(err)
 })
+}
+
+
+function handleSignIn (password, email) {
+  auth.login(password, email)
+  .then(res => res.ok ? res.json() : res.json().then(res=> {throw res}))
+  .then((dataUser)=> {
+      handleLogin(dataUser);
+      navigate("/movies")
+    })
+  .catch(err=> {console.log(err);
+    setErrorServerMessage(err.message);
+  })
+}
+
+function handleSignUp (name, password, email){
+  auth.register(name, password, email)
+  .then(res => res.ok ? res.json() : res.json().then(res => {throw res}))
+  .then((dataUser)=> {
+    // handleLogin(dataUser);
+    // navigate("/movies");
+    handleSignIn (password, email)
+  })
+  .catch((err)=> {console.log(err);
+    setErrorServerMessage(err.message)
+  })
 }
 
   return (
@@ -122,12 +164,13 @@ mainApi.delMovie(idMovie)
             />
           }
         ></Route>
-        <Route path="/signin" element={<Login nav={nav} handleLogin={handleLogin}/>}></Route>
-        <Route path="/signup" element={<Register nav={nav} handleLogin={handleLogin}/>}></Route>
+        <Route path="/signin" element={<Login nav={nav}  handleSignIn={handleSignIn}/>}></Route>
+        <Route path="/signup" element={<Register nav={nav} handleSignUp={handleSignUp}/>}></Route>
         <Route
           path="/profile"
           element={
-            <Profile
+            <ProtectedRoute
+            component = {Profile}
               login={loggedIn}
               burgerNav={handleBurgerMenu}
               burgerNavInactive={handleBurgerMenuInactive}
@@ -135,11 +178,12 @@ mainApi.delMovie(idMovie)
               handleLogOut={handleLogOut}
             />
           }
-        ></Route>
+        />
         <Route
           path="/movies"
           element={
-            <Movies
+          <ProtectedRoute
+          component={Movies}
               buttonDownloadStatus={true}
               login={loggedIn}
               burgerNav={handleBurgerMenu}
@@ -151,13 +195,14 @@ mainApi.delMovie(idMovie)
               saveMovies={saveMovies}
               handleSaveMovie={handleSaveMovie}
               handleDeleteMovie={handleDeleteMovie}
-            />
-          }
-        ></Route>
+        />
+      }
+        />
         <Route
           path="/saved-movies"
           element={
-            <SavedMovies
+            <ProtectedRoute
+            component = {SavedMovies}
               buttonDownloadStatus={false}
               login={loggedIn}
               burgerNav={handleBurgerMenu}
@@ -166,10 +211,11 @@ mainApi.delMovie(idMovie)
               //массив сохраненных пользователем фильмов
               movies={saveMovies}
               handleDeleteMovie={handleDeleteMovie}
+              allDisplayMovies={true}
             />
           }
-        ></Route>
-        <Route path="*" element={<PageNotFound nav={nav} />} />
+          />
+                <Route path="*" element={<PageNotFound nav={nav} />} />
       </Routes>
       </UserContext.Provider>
     </>

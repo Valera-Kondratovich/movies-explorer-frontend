@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import logoPath from "../../images/logo.svg";
-import * as auth from "../../utils/Auth"
 
-function Login({handleLogin}) {
+
+function Login(props) {
   const navigate = useNavigate();
 
   // стейт хранит ошибки приходящие с сервера
@@ -45,15 +45,7 @@ function Login({handleLogin}) {
     e.preventDefault();
        const email = formValue.email;
        const password = formValue.password;
-    auth.login(password, email)
-    .then(res => res.ok ? res.json() : res.json().then(res=> {throw res}))
-    .then((dataUser)=> {
-        handleLogin(dataUser);
-        navigate("/movies")
-      })
-    .catch(err=> {console.log(err);
-      setErrorServerMessage(err.message);
-    })
+    props.handleSignIn(password, email)
   };
 
 //если пользователь поставил курсор с инпута меняем стейт

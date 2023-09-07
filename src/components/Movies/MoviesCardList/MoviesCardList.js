@@ -19,7 +19,7 @@ const [statusButton, setStatusButton] = useState(false)
 const [arrFilms, setArrFilms] = useState([])
 // const arrfilms=allFoundMovies.slice(0, countFilms.numberMovies+(countFilms.numberMoviesExtra * count))
 
-//эффкект проверяет если счетчик изменился или если изменился массив с найденными фильмами, то добавляем фильмы
+//эффект проверяет если счетчик изменился или если изменился массив с найденными фильмами, то добавляем фильмы
 useEffect(()=>{
 if (location.pathname === "/movies") {
   if (arrFilms.length===props.foundMovies.length) {
@@ -34,7 +34,7 @@ if (location.pathname === "/movies") {
     setStatusButton(false)
   }
   handleFlag()
-}, [props.count, props.foundMovies, arrFilms.length, location.pathname])
+}, [props.count, props.foundMovies, arrFilms.length, location.pathname ])
 
 
 //стейт который помогает определить какой массив фильмов пришел с /movies или с /saved-moviews
@@ -48,18 +48,32 @@ const [flag, setFlag] = useState(null)
   }
  }
 
- const movieIsSaved = ({ id }) => {
-  if (Array.isArray(props.savedMovies)) {
-    return props.savedMovies.filter(m => m.movieId === id).length;
-  }}
+ const movieSave = ( id ) => {
+  if (Array.isArray(props.saveMovies)) {
+    return props.saveMovies.filter(m => m.movieId === id).length;
+  }
+          return false;
+        }
 
+
+  const getSavedMovie = (movie) => {
+    if ('_id' in movie) {
+      return movie;
+    }
+
+    if (Array.isArray(props.saveMovies)) {
+      const [saved] = props.saveMovies.filter(m => m.movieId === movie.id) || [null];
+
+      return saved;
+    }
+  };
 
   return (
     <section className="section-cards">
       <div className="card-list">
         {(props.foundMovies.length) ? (arrFilms.map((movie)=>{
           return (
-          <MoviesCard key={flag ? movie.id : movie._id} image={movie.image.url} name={movie.nameRU} duration={movie.duration} trailerLink={movie.trailerLink} handleSaveMovie={props.handleSaveMovie} handleDeleteMovie={props.handleDeleteMovie} movie={movie} movieIsSaved={movieIsSaved}
+          <MoviesCard key={flag ? movie.id : movie._id} image={flag ? movie.image.url : movie.image} name={movie.nameRU} duration={movie.duration} trailerLink={movie.trailerLink} handleSaveMovie={props.handleSaveMovie} handleDeleteMovie={() => props.handleDeleteMovie(getSavedMovie(movie))} movie={movie} movieSave={movieSave}
           />
           );
           })) : "Ничего не найдено"}

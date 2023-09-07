@@ -25,7 +25,7 @@ function MoviesCard(props) {
 
   useEffect(()=>{
     handleFlag()
-  }, [location.pathname])
+  }, [location.pathname, flag])
 
 
   return (
@@ -42,8 +42,8 @@ function MoviesCard(props) {
         <div className="card__wrap">
           {flag ? (
             <button
-              onClick={()=> props.handleSaveMovie(props.movie)}
-              className={`card__button ${props.movieIsSaved(props.movie) ? 'card__button_saved': 'card__button_unsaved'}`}
+              onClick={()=> props.movieSave(props.movie.id) ? props.handleDeleteMovie(props.movie) : props.handleSaveMovie(props.movie)}
+              className={`card__button ${props.movieSave(props.movie.id) ? 'card__button_saved': 'card__button_unsaved'}`}
               type="button"
             />
           ) : (
