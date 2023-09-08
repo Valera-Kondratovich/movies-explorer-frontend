@@ -133,7 +133,7 @@ mainApi.delMovie(idMovie)
 function handleSignIn (password, email) {
 
   auth.login(password, email)
-  .then(res => res.ok ? console.log(res.json()) : res.json().then(res=> {throw res}))
+  .then(res => res.ok ? res.json() : res.json().then(res=> {throw res}))
   .then((dataUser)=> {
       handleLogin(dataUser);
       navigate("/movies")
