@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
 import logoPath from "../../images/logo.svg";
 import {
-  Routes,
-  Route,
-  useNavigate,
   Link,
   useLocation,
 } from "react-router-dom";

@@ -1,8 +1,6 @@
 import React from "react";
-import { Routes, Route, useNavigate, Link } from "react-router-dom";
-// import * as auth from "../utils/auth";
 
-function Techs(props) {
+function Techs() {
   return (
     <>
       <section className="techs">

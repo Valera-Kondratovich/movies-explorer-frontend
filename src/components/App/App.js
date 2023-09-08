@@ -12,7 +12,6 @@ import { UserContext } from "../Context/UserContext/UserContext";
 import mainApi from "../../utils/MainApi";
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import * as auth from "../../utils/Auth"
-import Preloader from "../Preloader/Preloader";
 
 function App() {
   const location = useLocation();
@@ -37,7 +36,6 @@ function App() {
       .catch((err) => console.log(err));
   }
   function handleLogin(dataUser) {
-    // tokenCheck()
     setLoggedIn(true);
     setCurrentUser(dataUser);
     navigate("/movies");

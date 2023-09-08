@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function PageNotFound(props) {
+function PageNotFound() {
   return (
     <main className="main">
       <section className="section-not-found">

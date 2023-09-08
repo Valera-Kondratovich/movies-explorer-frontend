@@ -4,7 +4,6 @@ import logoPath from "../../images/logo.svg";
 
 
 function Login(props) {
-  const navigate = useNavigate();
 
   // стейт хранит ошибки приходящие с сервера
   const [errorServerMessage, setErrorServerMessage] = useState('')

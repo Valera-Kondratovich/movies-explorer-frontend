@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Routes, Route, useNavigate, Link } from "react-router-dom";
 import Header from "../Header/Header";
 import SearchForm from "./SearchForm/SearchForm";
 import MoviesCardList from "./MoviesCardList/MoviesCardList";
@@ -16,8 +15,7 @@ function counterIncrease() {
 }
 
 const [isPreloader, setIsPreloader] = useState(false);
-console.log(isPreloader);
-//стейт найденных фильмов по ключевому слову НУЖНО ВЫВЕСТИ НА УРОВЕНЬ ВЫШЕ
+//стейт найденных фильмов по ключевому слову 
  const [foundMovies, setFoundMovies] = useState((JSON.parse(localStorage.getItem('foundMovies')) !== null) ? JSON.parse(localStorage.getItem('foundMovies')) : [])
 
  //стейт который хранит поисковый запрос ключевые слова

@@ -2,7 +2,7 @@ import React from "react";
 import { Routes, Route, useNavigate, Link } from "react-router-dom";
 // import * as auth from "../utils/auth";
 
-function Footer(props) {
+function Footer() {
   return (
     <>
       <footer className="footer">

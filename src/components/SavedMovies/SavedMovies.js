@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Routes, Route, useNavigate, Link } from "react-router-dom";
 import Header from "../Header/Header";
 import SearchForm from "../Movies/SearchForm/SearchForm";
 import Footer from "../Footer/Footer";
@@ -33,11 +32,6 @@ function handleShort () {
 
 
 useEffect(()=>{
-// if(!keyword) {
-//   //если в инпуте нет ключевого слова, передаю весь массив сохраненных фильмов
-//   return setFoundMoviess(props.movies)
-// }
-
     if (short) {
     const resultat = props.movies.filter(({ nameRU, nameEN, duration }) => {
       return ((nameRU.toLowerCase().includes(keyword.toLowerCase()) ||
@@ -58,8 +52,6 @@ useEffect(()=>{
         console.log(foundMoviess);
 }}
 , [short, keyword, props.movies])
-
-console.log(foundMoviess);
 
   return (
     <>

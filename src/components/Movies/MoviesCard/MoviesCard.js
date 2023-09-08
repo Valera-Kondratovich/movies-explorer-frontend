@@ -1,18 +1,11 @@
 import React, { useEffect, useState } from "react";
 import {
-  Routes,
-  Route,
-  useNavigate,
-  Link,
   useLocation,
 } from "react-router-dom";
 
 
 function MoviesCard(props) {
-
-
   const location = useLocation();
-
   const [flag, setFlag] = useState(null)
   const handleFlag = () => {
    if (location.pathname === "/movies") {

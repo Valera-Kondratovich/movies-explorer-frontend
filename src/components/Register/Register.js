@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import logoPath from "../../images/logo.svg";
-import * as auth from "../../utils/Auth"
 
 function Register(props) {
   // стейт хранит ошибки приходящие с сервера

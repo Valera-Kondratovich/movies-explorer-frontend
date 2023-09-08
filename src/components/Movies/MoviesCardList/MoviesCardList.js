@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Routes, Route, useNavigate, Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import ButtonDownload from "../ButtonDownload/ButtonDownload";
 import useCountMovies from "../../../utils/countMovies";
@@ -10,16 +10,11 @@ function MoviesCardList(props) {
   // объект хранит numberMovies(сколько фильмов отобразить сразу), numberMoviesExtra (сколько фильмов подгружать после нажатия еще)
 const countFilms = useCountMovies();
 
-
-
-// длина массива для сравнения с числом найденых фильмов
-
 //статус отображения кнопки еще
 const [statusButton, setStatusButton] = useState(false)
 
 //обрезанный массив
 const [arrFilms, setArrFilms] = useState([])
-// const arrfilms=allFoundMovies.slice(0, countFilms.numberMovies+(countFilms.numberMoviesExtra * count))
 
 //эффект проверяет если счетчик изменился или если изменился массив с найденными фильмами, то добавляем фильмы
 useEffect(()=>{

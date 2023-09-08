@@ -1,8 +1,5 @@
 import React from "react";
-import { useState } from "react";
-
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
-import { NavLink } from "react-router-dom";
 import "./Navigation.css";
 import MobileMenu from "./MobileMenu/MobileMenu";
 import DesktopMenu from "./DesktopMenu/DesktopMenu";
