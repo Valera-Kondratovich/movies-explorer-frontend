@@ -16,8 +16,10 @@ console.log(currentUser);
   useEffect(() => {
     setName(currentUser.name);
     setEmail(currentUser.email);
+    setNameTitle(currentUser.name)
 
   }, [currentUser.name, currentUser.email]);
+
   function handleInputValidEnabled (e) {
     setInputValid(true)
     console.log(inputValid);
