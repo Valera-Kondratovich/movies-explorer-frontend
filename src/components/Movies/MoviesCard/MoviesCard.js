@@ -28,7 +28,7 @@ function MoviesCard(props) {
         className="card__img"
         src={ props.movie.thumbnail
           || `https://api.nomoreparties.co${props.movie.image.url}`}
-        alt={`Название фильма: ${props.nameRU}`}
+        alt={`Название фильма: ${props.movie.nameRU}`}
       />
       </a>
       <div className="card__group">
