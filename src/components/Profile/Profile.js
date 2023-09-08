@@ -8,7 +8,7 @@ import * as auth from "../../utils/Auth"
 function Profile(props) {
   const navigate = useNavigate();
   const currentUser = useContext(UserContext);
-
+console.log(currentUser);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [nameTitle, setNameTitle] = useState(currentUser.name)
@@ -16,8 +16,8 @@ function Profile(props) {
   useEffect(() => {
     setName(currentUser.name);
     setEmail(currentUser.email);
-  }, [currentUser]);
 
+  }, [currentUser.name, currentUser.email]);
   function handleInputValidEnabled (e) {
     setInputValid(true)
     console.log(inputValid);
