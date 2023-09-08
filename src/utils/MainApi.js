@@ -1,4 +1,4 @@
-const urlApi = 'http://localhost:3000'; //https://api.mesto.kondratovich.nomoredomains.work указать адрес сервера бекенд
+const urlApi = 'http://localhost:3000'; //https://api.mesto.kondratovich.nomoredomains.work указать адрес сервера бекенд //http://localhost:3000
 const urlMoviesApi = 'https://api.nomoreparties.co';
  class MainApi {
   constructor(config) {
@@ -30,7 +30,7 @@ const urlMoviesApi = 'https://api.nomoreparties.co';
         duration,
         year,
         description,
-        image: image.url,
+        image: `${urlMoviesApi}${image.url}`,
         trailerLink: trailerLink,
         thumbnail: `${urlMoviesApi}${image.formats.thumbnail.url}`,
         movieId: id,

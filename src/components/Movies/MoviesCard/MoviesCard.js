@@ -26,7 +26,8 @@ function MoviesCard(props) {
       <a className="card__link" target="_blank" rel="noreferrer" href={props.trailerLink}>
       <img
         className="card__img"
-        src={`https://api.nomoreparties.co${props.image}`}
+        src={ props.movie.thumbnail
+          || `https://api.nomoreparties.co${props.movie.image.url}`}
         alt={`Название фильма: ${props.nameRU}`}
       />
       </a>

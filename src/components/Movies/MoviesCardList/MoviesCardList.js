@@ -71,7 +71,7 @@ const [flag, setFlag] = useState(null)
 {props.isPreloader ? <Preloader/> : ''}
         {(props.foundMovies.length) ? (arrFilms.map((movie)=>{
           return (
-          <MoviesCard key={flag ? movie.id : movie._id} image={flag ? movie.image.url : movie.image} name={movie.nameRU} duration={movie.duration} trailerLink={movie.trailerLink} handleSaveMovie={props.handleSaveMovie} handleDeleteMovie={() => props.handleDeleteMovie(getSavedMovie(movie))} movie={movie} movieSave={movieSave}
+          <MoviesCard key={flag ? movie.id : movie._id} name={movie.nameRU} duration={movie.duration} trailerLink={movie.trailerLink} handleSaveMovie={props.handleSaveMovie} handleDeleteMovie={() => props.handleDeleteMovie(getSavedMovie(movie))} movie={movie} movieSave={movieSave}
           />
           );
           })) : "Ничего не найдено"}
