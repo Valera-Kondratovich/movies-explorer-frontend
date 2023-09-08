@@ -4,7 +4,7 @@ import Header from "../Header/Header";
 import SearchForm from "./SearchForm/SearchForm";
 import MoviesCardList from "./MoviesCardList/MoviesCardList";
 import Footer from "../Footer/Footer";
-import Preloader from "../Preloader/Preloader";
+
 
 function Movies(props) {
 //счетчик на который будем умножать , что бы увеличить массив отображаемых фильмов
@@ -15,6 +15,8 @@ function counterIncrease() {
   setCount(count+1)
 }
 
+const [isPreloader, setIsPreloader] = useState(false);
+console.log(isPreloader);
 //стейт найденных фильмов по ключевому слову НУЖНО ВЫВЕСТИ НА УРОВЕНЬ ВЫШЕ
  const [foundMovies, setFoundMovies] = useState((JSON.parse(localStorage.getItem('foundMovies')) !== null) ? JSON.parse(localStorage.getItem('foundMovies')) : [])
 
@@ -44,6 +46,7 @@ if(keyword==='') {
 }
 else {
     if (short) {
+
     const resultat = props.movies.filter(({ nameRU, nameEN, duration }) => {
       return ((nameRU.toLowerCase().includes(keyword.toLowerCase()) ||
           nameEN.toLowerCase().includes(keyword.toLowerCase()))
@@ -51,7 +54,8 @@ else {
           )
         })
         localStorage.setItem('foundMovies', JSON.stringify(resultat))
-          setFoundMovies(resultat)
+        setFoundMovies(resultat)
+
   }
   else{
   const resultat = props.movies.filter(({ nameRU, nameEN }) => {
@@ -59,7 +63,9 @@ else {
         nameEN.toLowerCase().includes(keyword.toLowerCase())))})
         localStorage.setItem('foundMovies', JSON.stringify(resultat))
         setFoundMovies(resultat)
-}}}
+}}
+setIsPreloader(false)
+}
 , [short, keyword, props.movies])
 
   return (
@@ -71,7 +77,7 @@ else {
         nav={props.nav}
       ></Header>
       <main className="main">
-        <SearchForm nav={props.nav} handleKeyword={handleKeyword} handleShort={handleShort} short={short} keyword={keyword}></SearchForm>
+        <SearchForm nav={props.nav} handleKeyword={handleKeyword} handleShort={handleShort} short={short} keyword={keyword} setIsPreloader={setIsPreloader}></SearchForm>
         <MoviesCardList
           nav={props.nav}
           buttonDownloadStatus={props.buttonDownloadStatus}
@@ -87,6 +93,7 @@ else {
           handleSaveMovie={props.handleSaveMovie}
           //функция удаления фильма
           handleDeleteMovie={props.handleDeleteMovie}
+          isPreloader={isPreloader}
         ></MoviesCardList>
       </main>
       <Footer nav={props.nav}></Footer>

@@ -3,11 +3,13 @@ import { Routes, Route, useNavigate, Link, useLocation } from "react-router-dom"
 import MoviesCard from "../MoviesCard/MoviesCard";
 import ButtonDownload from "../ButtonDownload/ButtonDownload";
 import useCountMovies from "../../../utils/countMovies";
+import Preloader from "../../Preloader/Preloader";
 
 function MoviesCardList(props) {
   const location = useLocation();
   // объект хранит numberMovies(сколько фильмов отобразить сразу), numberMoviesExtra (сколько фильмов подгружать после нажатия еще)
 const countFilms = useCountMovies();
+
 
 
 // длина массива для сравнения с числом найденых фильмов
@@ -71,6 +73,7 @@ const [flag, setFlag] = useState(null)
   return (
     <section className="section-cards">
       <div className="card-list">
+{props.isPreloader ? <Preloader/> : ''}
         {(props.foundMovies.length) ? (arrFilms.map((movie)=>{
           return (
           <MoviesCard key={flag ? movie.id : movie._id} image={flag ? movie.image.url : movie.image} name={movie.nameRU} duration={movie.duration} trailerLink={movie.trailerLink} handleSaveMovie={props.handleSaveMovie} handleDeleteMovie={() => props.handleDeleteMovie(getSavedMovie(movie))} movie={movie} movieSave={movieSave}

@@ -12,12 +12,14 @@ import { UserContext } from "../Context/UserContext/UserContext";
 import mainApi from "../../utils/MainApi";
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import * as auth from "../../utils/Auth"
+import Preloader from "../Preloader/Preloader";
 
 function App() {
   const location = useLocation();
   const [currentUser, setCurrentUser] = useState({});
   const [loggedIn, setLoggedIn] = useState(false);
   const navigate = useNavigate();
+
 
   useEffect(() => {
     tokenCheck()
@@ -57,7 +59,12 @@ function App() {
     setSaveMovies([]);
     localStorage.setItem('movies', JSON.stringify([]))
     localStorage.setItem('saveMovies', JSON.stringify([]))
-
+    localStorage.setItem('keyword', JSON.stringify(''))
+    localStorage.setItem('foundMovies', JSON.stringify([]))
+    localStorage.setItem('chekbox', JSON.stringify(false))
+    localStorage.setItem('keywordsSavedMovies', JSON.stringify(''))
+    localStorage.setItem('chekboxSavedMovies', JSON.stringify(false))
+    localStorage.setItem('foundFromSaveMovies', JSON.stringify([]))
     setLoggedIn(false)
   }
  const [errorServerMessage, setErrorServerMessage] = useState('');
@@ -69,6 +76,7 @@ const [saveMovies, setSaveMovies] = useState([])
 
  useEffect(() =>{
  if (loggedIn) {
+
    moviesApi.getAllMovies()
    .then((movies) => {
     localStorage.setItem('movies', JSON.stringify(movies))
@@ -125,6 +133,7 @@ mainApi.delMovie(idMovie)
 
 
 function handleSignIn (password, email) {
+
   auth.login(password, email)
   .then(res => res.ok ? res.json() : res.json().then(res=> {throw res}))
   .then((dataUser)=> {
@@ -134,14 +143,13 @@ function handleSignIn (password, email) {
   .catch(err=> {console.log(err);
     setErrorServerMessage(err.message);
   })
+
 }
 
 function handleSignUp (name, password, email){
   auth.register(name, password, email)
   .then(res => res.ok ? res.json() : res.json().then(res => {throw res}))
   .then((dataUser)=> {
-    // handleLogin(dataUser);
-    // navigate("/movies");
     handleSignIn (password, email)
   })
   .catch((err)=> {console.log(err);

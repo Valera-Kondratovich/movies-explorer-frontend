@@ -27,6 +27,8 @@ const movieHandler = (e) => {
 }
   const onSearch = (e) => {
     e.preventDefault();
+    props.setIsPreloader(true)
+
     const keyword = movieInput;
     if (!keyword) {
       setMovieError('Нужно ввести ключевое слово')
