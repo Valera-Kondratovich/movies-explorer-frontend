@@ -11,14 +11,23 @@ import SavedMovies from "../SavedMovies/SavedMovies";
 import { UserContext } from "../Context/UserContext/UserContext";
 import mainApi from "../../utils/MainApi";
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import InfoTooltip from "../InfoTooltip/InfoTooltip";
 import * as auth from "../../utils/Auth"
 
 function App() {
   const location = useLocation();
   const [currentUser, setCurrentUser] = useState({});
   const [loggedIn, setLoggedIn] = useState(false);
+  const [isInfoPopupOpen, setIsInfoPopupOpen] = useState(false);
+  const [isError, setIsError] = useState(false);
   const navigate = useNavigate();
 
+  console.log(isInfoPopupOpen);
+
+  function closeAllPopups() {
+    setIsInfoPopupOpen(false);
+    setIsError(false)
+  }
 
   useEffect(() => {
     tokenCheck()
@@ -182,6 +191,8 @@ function handleSignUp (name, password, email){
               burgerNavInactive={handleBurgerMenuInactive}
               nav={nav}
               handleLogOut={handleLogOut}
+              isInfoPopupOpen={setIsInfoPopupOpen}
+              isError={setIsError}
             />
           }
         />
@@ -223,6 +234,11 @@ function handleSignUp (name, password, email){
           />
                 <Route path="*" element={<PageNotFound nav={nav} />} />
       </Routes>
+      <InfoTooltip
+          isOpen={isInfoPopupOpen}
+          onClose={closeAllPopups}
+          onError={isError}
+        />
       </UserContext.Provider>
     </>
   );

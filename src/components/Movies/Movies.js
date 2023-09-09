@@ -3,6 +3,7 @@ import Header from "../Header/Header";
 import SearchForm from "./SearchForm/SearchForm";
 import MoviesCardList from "./MoviesCardList/MoviesCardList";
 import Footer from "../Footer/Footer";
+import Preloader from "../Preloader/Preloader";
 
 
 function Movies(props) {
@@ -15,7 +16,7 @@ function counterIncrease() {
 }
 
 const [isPreloader, setIsPreloader] = useState(false);
-//стейт найденных фильмов по ключевому слову 
+//стейт найденных фильмов по ключевому слову
  const [foundMovies, setFoundMovies] = useState((JSON.parse(localStorage.getItem('foundMovies')) !== null) ? JSON.parse(localStorage.getItem('foundMovies')) : [])
 
  //стейт который хранит поисковый запрос ключевые слова
@@ -39,6 +40,7 @@ function handleShort () {
 
 
 useEffect(()=>{
+  setIsPreloader(false)
 if(keyword==='') {
   setFoundMovies([])
 }
@@ -62,9 +64,8 @@ else {
         localStorage.setItem('foundMovies', JSON.stringify(resultat))
         setFoundMovies(resultat)
 }}
-setIsPreloader(false)
 }
-, [short, keyword, props.movies])
+, [short, keyword, props.movies, isPreloader])
 
   return (
     <>
@@ -76,7 +77,7 @@ setIsPreloader(false)
       ></Header>
       <main className="main">
         <SearchForm nav={props.nav} handleKeyword={handleKeyword} handleShort={handleShort} short={short} keyword={keyword} setIsPreloader={setIsPreloader}></SearchForm>
-        <MoviesCardList
+        {isPreloader ? <Preloader/> :  <MoviesCardList
           nav={props.nav}
           buttonDownloadStatus={props.buttonDownloadStatus}
           //массив найденных фильмов по ключевым словам
@@ -91,8 +92,9 @@ setIsPreloader(false)
           handleSaveMovie={props.handleSaveMovie}
           //функция удаления фильма
           handleDeleteMovie={props.handleDeleteMovie}
-          isPreloader={isPreloader}
-        ></MoviesCardList>
+          // isPreloader={isPreloader}
+        ></MoviesCardList>}
+
       </main>
       <Footer nav={props.nav}></Footer>
     </>

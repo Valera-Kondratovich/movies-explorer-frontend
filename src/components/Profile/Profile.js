@@ -8,7 +8,6 @@ import * as auth from "../../utils/Auth"
 function Profile(props) {
   const navigate = useNavigate();
   const currentUser = useContext(UserContext);
-console.log(currentUser);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [nameTitle, setNameTitle] = useState(currentUser.name)
@@ -16,13 +15,10 @@ console.log(currentUser);
   useEffect(() => {
     setName(currentUser.name);
     setEmail(currentUser.email);
-    setNameTitle(currentUser.name)
-
   }, [currentUser.name, currentUser.email]);
 
   function handleInputValidEnabled (e) {
     setInputValid(true)
-    console.log(inputValid);
   }
 
   function handleInputValidDisabled () {
@@ -134,9 +130,12 @@ useEffect (()=> {
     setEmail(dataUser.email);
     setNameTitle(dataUser.name);
     setInputValid(false)
-
+    props.isInfoPopupOpen(true)
+props.isError(false)
     })
   .catch(err=> {console.log(err);
+    props.isInfoPopupOpen(true)
+props.isError(true)
     setErrorServerMessage(err.message);
   });
   }
@@ -209,7 +208,7 @@ useEffect (()=> {
                 <button onClick={handleInputValidEnabled} className="profile__link" type="button">
                   Редактировать
                 </button>
-                <button onClick={onSignOut} className="profile__link profile__link_color">
+                <button onClick={onSignOut} className="profile__link profile__link_color" type="button">
                   Выйти из аккаунта
                 </button>
               </div>
