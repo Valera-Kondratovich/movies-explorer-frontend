@@ -3,7 +3,6 @@ import { useLocation } from "react-router-dom";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import ButtonDownload from "../ButtonDownload/ButtonDownload";
 import useCountMovies from "../../../utils/countMovies";
-import Preloader from "../../Preloader/Preloader";
 
 function MoviesCardList(props) {
   const location = useLocation();
@@ -31,7 +30,7 @@ if (location.pathname === "/movies") {
     setStatusButton(false)
   }
   handleFlag()
-}, [props.count, props.foundMovies, arrFilms.length, location.pathname ])
+}, [props.count, props.foundMovies, arrFilms.length, location.pathname, countFilms.numberMovies, countFilms.numberMoviesExtra ])
 
 
 //стейт который помогает определить какой массив фильмов пришел с /movies или с /saved-moviews

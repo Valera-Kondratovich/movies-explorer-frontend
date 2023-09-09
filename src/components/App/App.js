@@ -5,7 +5,7 @@ import Register from "../Register/Register";
 import Profile from "../Profile/Profile";
 import PageNotFound from "../PageNotFound/PageNotFound";
 import moviesApi from "../../utils/MoviesApi";
-import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import { UserContext } from "../Context/UserContext/UserContext";
@@ -15,7 +15,6 @@ import InfoTooltip from "../InfoTooltip/InfoTooltip";
 import * as auth from "../../utils/Auth"
 
 function App() {
-  const location = useLocation();
   const [currentUser, setCurrentUser] = useState({});
   const [loggedIn, setLoggedIn] = useState(false);
   const [isInfoPopupOpen, setIsInfoPopupOpen] = useState(false);
