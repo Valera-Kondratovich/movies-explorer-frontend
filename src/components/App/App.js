@@ -21,8 +21,6 @@ function App() {
   const [isError, setIsError] = useState(false);
   const navigate = useNavigate();
 
-  console.log(isInfoPopupOpen);
-
   function closeAllPopups() {
     setIsInfoPopupOpen(false);
     setIsError(false)

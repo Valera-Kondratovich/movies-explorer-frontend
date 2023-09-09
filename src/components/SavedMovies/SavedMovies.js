@@ -48,8 +48,6 @@ useEffect(()=>{
         nameEN.toLowerCase().includes(keyword.toLowerCase())))})
         localStorage.setItem('foundFromSaveMovies', JSON.stringify(resultat))
         setFoundMoviess(resultat)
-        console.log(resultat);
-        console.log(foundMoviess);
 }}
 , [short, keyword, props.movies])
 
