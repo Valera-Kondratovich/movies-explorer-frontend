@@ -3,6 +3,7 @@ import Header from "../Header/Header";
 import SearchForm from "../Movies/SearchForm/SearchForm";
 import Footer from "../Footer/Footer";
 import MoviesCardList from "../Movies/MoviesCardList/MoviesCardList";
+import Preloader from "../Preloader/Preloader";
 
 function SavedMovies(props) {
 //счетчик на который будем умножать , что бы увеличить массив отображаемых фильмов
@@ -12,7 +13,7 @@ function SavedMovies(props) {
  const [foundMoviess, setFoundMoviess] = useState((JSON.parse(localStorage.getItem('foundFromSaveMovies')) !== null) ? JSON.parse(localStorage.getItem('foundFromSaveMovies')) : [])
 
 //стейт который хранит поисковый запрос ключевые слова
-const [keyword, setKeyword] = useState((JSON.parse(localStorage.getItem('keywordsSavedMovies'))!==null) ? JSON.parse(localStorage.getItem('keywordsSavedMovies')) : '')
+const [keywords, setKeyword] = useState((JSON.parse(localStorage.getItem('keywordsSavedMovies'))!==null) ? JSON.parse(localStorage.getItem('keywordsSavedMovies')) : '')
 
 //функция которая обновляет стейт посквого запроса
 function handleKeyword (keywords) {
@@ -24,6 +25,8 @@ function handleKeyword (keywords) {
 //стейт чекбокса
 const [short, setShort] = useState((JSON.parse(localStorage.getItem('chekboxSavedMovies'))!==null) ? JSON.parse(localStorage.getItem('chekboxSavedMovies')) : false)
 
+const [isPreloader, setIsPreloader] = useState(false);
+
 //функция меняет состояние чекбокса
 function handleShort () {
  setShort(!short)
@@ -32,10 +35,11 @@ function handleShort () {
 
 
 useEffect(()=>{
+  setIsPreloader(false)
     if (short) {
     const resultat = props.movies.filter(({ nameRU, nameEN, duration }) => {
-      return ((nameRU.toLowerCase().includes(keyword.toLowerCase()) ||
-          nameEN.toLowerCase().includes(keyword.toLowerCase()))
+      return ((nameRU.toLowerCase().includes(keywords.toLowerCase()) ||
+          nameEN.toLowerCase().includes(keywords.toLowerCase()))
           && (duration <= 40)
           )
         })
@@ -44,12 +48,12 @@ useEffect(()=>{
   }
   else{
   const resultat = props.movies.filter(({ nameRU, nameEN }) => {
-    return ((nameRU.toLowerCase().includes(keyword.toLowerCase()) ||
-        nameEN.toLowerCase().includes(keyword.toLowerCase())))})
+    return ((nameRU.toLowerCase().includes(keywords.toLowerCase()) ||
+        nameEN.toLowerCase().includes(keywords.toLowerCase())))})
         localStorage.setItem('foundFromSaveMovies', JSON.stringify(resultat))
         setFoundMoviess(resultat)
 }}
-, [short, keyword, props.movies])
+, [short, keywords, props.movies, isPreloader])
 
   return (
     <>
@@ -60,7 +64,8 @@ useEffect(()=>{
         nav={props.nav}
       ></Header>
       <main className="main">
-        <SearchForm nav={props.nav} handleKeyword={handleKeyword} handleShort={handleShort} short={short} keyword={keyword} ></SearchForm>
+        <SearchForm nav={props.nav} handleKeyword={handleKeyword} handleShort={handleShort} short={short} keyword={keywords} setIsPreloader={setIsPreloader}></SearchForm>
+        {isPreloader ? <Preloader/> :
         <MoviesCardList
           nav={props.nav}
           buttonDownloadStatus={props.buttonDownloadStatus}
@@ -68,6 +73,7 @@ useEffect(()=>{
           foundMovies={foundMoviess}
           handleDeleteMovie={props.handleDeleteMovie}
         ></MoviesCardList>
+  }
       </main>
       <Footer nav={props.nav}></Footer>
     </>

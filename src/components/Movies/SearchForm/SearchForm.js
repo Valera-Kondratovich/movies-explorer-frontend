@@ -1,9 +1,26 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 
 function SearchForm(props) {
+  const location = useLocation();
+  //будем проверять что ввел пользователь
+  const [movieInput, setMovieInput] = useState(' ');
 
-    //будем проверять что ввел пользователь
-    const [movieInput, setMovieInput] = useState((JSON.parse(localStorage.getItem('keyword'))!==null) ? JSON.parse(localStorage.getItem('keyword')) : '');
+  useEffect(()=>{
+
+    if (location.pathname==='/saved-movies') {
+      setMovieInput(JSON.parse(localStorage.getItem('keywordsSavedMovies')))
+    }
+    else {
+      if (location.pathname==='/movies') {
+        setMovieInput(JSON.parse(localStorage.getItem('keyword')))
+      }
+      else{
+        setMovieInput('')
+      }
+    }
+  }, [location.pathname])
+
 
     //ошибка по умолчанию если инпуты пустые
     const [movieError, setMovieError] = useState('');

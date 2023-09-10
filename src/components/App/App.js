@@ -37,7 +37,7 @@ function App() {
       .then((res) => {
         setLoggedIn(true);
          setCurrentUser(res);
-        navigate("/movies");
+        navigate("/movies", {replace: true});
 
       })
       .catch((err) => console.log(err));
@@ -94,7 +94,11 @@ const [saveMovies, setSaveMovies] = useState([])
   .then((movies)=>{
     localStorage.setItem('saveMovies', JSON.stringify(movies))
     setSaveMovies(movies)
+
   })
+  .catch((err) => {
+    console.log(err)
+    setErrorServerMessage(err)})
 
  }
  else {
@@ -192,6 +196,7 @@ function handleSignUp (name, password, email){
               handleLogOut={handleLogOut}
               isInfoPopupOpen={setIsInfoPopupOpen}
               isError={setIsError}
+              setCurrentUser={setCurrentUser}
             />
           }
         />

@@ -83,6 +83,7 @@ const nameHandler = (e) => {
     else{
     setNameError('');
     handleChange(e)
+    setFormValid(true)
     }
   }
 }
@@ -103,6 +104,7 @@ const emailHandler = (e) => {
     else {
     setEmailError('');
     handleChange(e)
+    setFormValid(true)
     }
   }
 }
@@ -110,9 +112,6 @@ const emailHandler = (e) => {
 useEffect (()=> {
   if (nameError || emailError ) {
     setFormValid(false)
-  }
-  else {
-    setFormValid(true)
   }
 }, [nameError, emailError]);
 
@@ -127,11 +126,13 @@ useEffect (()=> {
     .then((dataUser)=> {
       setErrorServerMessage('')
       setName(dataUser.name);
-    setEmail(dataUser.email);
-    setNameTitle(dataUser.name);
-    setInputValid(false)
-    props.isInfoPopupOpen(true)
-props.isError(false)
+      setEmail(dataUser.email);
+      setNameTitle(dataUser.name);
+      setInputValid(false)
+      props.isInfoPopupOpen(true)
+      props.isError(false)
+      props.setCurrentUser(dataUser)
+      setFormValid(false)
     })
   .catch(err=> {console.log(err);
     props.isInfoPopupOpen(true)

@@ -6,10 +6,6 @@
   justify-content: center;
 }
 
-.menu_distance {
-  gap: 40px;
-}
-
 .menu__wrap-link {
   list-style: none;
   margin: 0 auto;
@@ -17,10 +13,6 @@
   gap: 16px;
   padding: 0px 0 0 68px;
 
-}
-
-.menu__wrap-link_position {
-  margin: 0 0 0 auto;
 }
 
 .menu__link {
