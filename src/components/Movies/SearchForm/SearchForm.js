@@ -21,11 +21,8 @@ function SearchForm(props) {
     }
   }, [location.pathname])
 
-  console.log(movieInput);
-
     //ошибка по умолчанию если инпуты пустые
     const [movieError, setMovieError] = useState('');
-
 
     //меняем стейт если пользователь поставил курсор в инпут
 const focusHandler = (e) => {
