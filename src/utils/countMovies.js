@@ -32,7 +32,7 @@ useEffect(()=>{
   }
 }
 )
-return({numberMovies, numberMoviesExtra})
+return({numberMovies, numberMoviesExtra, widthScreen})
 }
 
 

@@ -183,7 +183,7 @@ const passwordHandler = (e) => {
           </div>
           <div className="register__container">
             <span className="register__text-error register__text-error_active">
-              {errorServerMessage}
+              {props.errorServerMessage}
             </span>
             <button disabled={!formValid} className={`register__submit ${!formValid ? 'register__submit_disabled' : ''}`} type="submit">
               Зарегистрироваться

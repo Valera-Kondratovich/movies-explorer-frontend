@@ -1,7 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 
 function PageNotFound() {
+  const navigate = useNavigate();
+  const handleBack = () => {
+    navigate(-1);
+  };
   return (
     <main className="main">
       <section className="section-not-found">
@@ -10,9 +14,9 @@ function PageNotFound() {
             <span className="not-found__text">404</span>
             <h1 className="not-found__title">Страница не найдена</h1>
           </div>
-          <Link className="not-found__button" to="/">
+          <button className="not-found__button" type="button" onClick={handleBack}>
             Назад
-          </Link>
+          </button>
         </div>
       </section>
     </main>

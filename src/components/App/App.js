@@ -20,6 +20,7 @@ function App() {
   const [isInfoPopupOpen, setIsInfoPopupOpen] = useState(false);
   const [isError, setIsError] = useState(false);
   const navigate = useNavigate();
+  const [errorServerMessage, setErrorServerMessage] = useState('');
 
   function closeAllPopups() {
     setIsInfoPopupOpen(false);
@@ -71,7 +72,6 @@ function App() {
     localStorage.setItem('foundFromSaveMovies', JSON.stringify([]))
     setLoggedIn(false)
   }
- const [errorServerMessage, setErrorServerMessage] = useState('');
 
 // стейт всех фильмов из локал сторедж
 const [movies, setMovies] = useState((JSON.parse(localStorage.getItem('movies')) !== null) ? JSON.parse(localStorage.getItem('movies')): []);
@@ -143,6 +143,7 @@ function handleSignIn (password, email) {
   .then((dataUser)=> {
       handleLogin(dataUser);
       navigate("/movies")
+      setErrorServerMessage('')
     })
   .catch(err=> {console.log(err);
     setErrorServerMessage(err.message);
@@ -155,6 +156,7 @@ function handleSignUp (name, password, email){
   .then(res => res.ok ? res.json() : res.json().then(res => {throw res}))
   .then((dataUser)=> {
     handleSignIn (password, email)
+    setErrorServerMessage('')
   })
   .catch((err)=> {console.log(err);
     setErrorServerMessage(err.message)
@@ -176,8 +178,8 @@ function handleSignUp (name, password, email){
             />
           }
         ></Route>
-        <Route path="/signin" element={<Login nav={nav}  handleSignIn={handleSignIn}/>}></Route>
-        <Route path="/signup" element={<Register nav={nav} handleSignUp={handleSignUp}/>}></Route>
+        <Route path="/signin" element={<Login nav={nav}  handleSignIn={handleSignIn} errorServerMessage={errorServerMessage}/>}></Route>
+        <Route path="/signup" element={<Register nav={nav} handleSignUp={handleSignUp} errorServerMessage={errorServerMessage}/>}></Route>
         <Route
           path="/profile"
           element={

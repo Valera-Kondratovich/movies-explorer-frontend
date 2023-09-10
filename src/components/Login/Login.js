@@ -144,7 +144,7 @@ else {
           </div>
           <div className="login__container">
             <span className="login__text-error">
-              {errorServerMessage}
+              {props.errorServerMessage}
             </span>
             <button disabled={!formValid} className={`login__submit ${!formValid ? 'login__submit_disabled' : ''}`} type="submit">
               Войти
