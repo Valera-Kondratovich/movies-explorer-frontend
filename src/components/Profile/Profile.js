@@ -10,7 +10,6 @@ function Profile(props) {
   const currentUser = useContext(UserContext);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [nameTitle, setNameTitle] = useState(currentUser.name)
   const [inputValid, setInputValid] = useState(false)
   useEffect(() => {
     setName(currentUser.name);
@@ -127,7 +126,6 @@ useEffect (()=> {
       setErrorServerMessage('')
       setName(dataUser.name);
       setEmail(dataUser.email);
-      setNameTitle(dataUser.name);
       setInputValid(false)
       props.isInfoPopupOpen(true)
       props.isError(false)
@@ -170,7 +168,7 @@ props.isError(true)
             noValidate
             onSubmit={onUpdateProfile}
           >
-            <h1 className="profile__title">{`Привет, ${nameTitle}!`}</h1>
+            <h1 className="profile__title">{`Привет, ${currentUser.name}!`}</h1>
             <div className="profile__main">
               <div className="profile__inner">
                 <label className="profile__inner-text">Имя</label>

@@ -16,7 +16,7 @@ import * as auth from "../../utils/Auth"
 
 function App() {
   const [currentUser, setCurrentUser] = useState({});
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState((JSON.parse(localStorage.getItem('isLoginUser')) !== null) ? JSON.parse(localStorage.getItem('isLoginUser')): false);
   const [isInfoPopupOpen, setIsInfoPopupOpen] = useState(false);
   const [isError, setIsError] = useState(false);
   const navigate = useNavigate();
@@ -62,9 +62,8 @@ function App() {
     localStorage.setItem('keyword', JSON.stringify(''))
     localStorage.setItem('foundMovies', JSON.stringify([]))
     localStorage.setItem('chekbox', JSON.stringify(false))
-    localStorage.setItem('keywordsSavedMovies', JSON.stringify(''))
-    localStorage.setItem('chekboxSavedMovies', JSON.stringify(false))
     localStorage.setItem('foundFromSaveMovies', JSON.stringify([]))
+    localStorage.setItem('isLoginUser', JSON.stringify(false))
     setLoggedIn(false)
   }
 
@@ -141,6 +140,7 @@ function handleSignIn (password, email) {
   .then(res => res.ok ? res.json() : res.json().then(res=> {throw res}))
   .then((dataUser)=> {
       handleLogin(dataUser);
+      localStorage.setItem('isLoginUser', JSON.stringify(true))
       navigate("/movies")
       setErrorServerMessage('')
     })
