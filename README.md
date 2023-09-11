@@ -8,5 +8,5 @@
 
 Ссылка на frondend https://mesto.kondratovich.nomoreparties.sbs/
 
-Ссылка пул реквест https://github.com/Valera-Kondratovich/movies-explorer-frontend/pull/2
+Ссылка пул реквест <https://github.com/Valera-Kondratovich/movies-explorer-frontend/pull/2>
 
