@@ -7,18 +7,12 @@ function SearchForm(props) {
   const [movieInput, setMovieInput] = useState('');
 
   useEffect(()=>{
-
-    if (location.pathname==='/saved-movies') {
-      setMovieInput((localStorage.getItem('keywordsSavedMovies') !== null) ? JSON.parse(localStorage.getItem('keywordsSavedMovies')) : '')
-    }
-    else {
       if (location.pathname==='/movies') {
         setMovieInput((localStorage.getItem('keyword') !== null) ? JSON.parse(localStorage.getItem('keyword')) : '')
       }
       else{
         setMovieInput("")
       }
-    }
   }, [location.pathname])
 
     //ошибка по умолчанию если инпуты пустые

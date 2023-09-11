@@ -13,24 +13,23 @@ function SavedMovies(props) {
  const [foundMoviess, setFoundMoviess] = useState((JSON.parse(localStorage.getItem('foundFromSaveMovies')) !== null) ? JSON.parse(localStorage.getItem('foundFromSaveMovies')) : [])
 
 //стейт который хранит поисковый запрос ключевые слова
-const [keywords, setKeyword] = useState((JSON.parse(localStorage.getItem('keywordsSavedMovies'))!==null) ? JSON.parse(localStorage.getItem('keywordsSavedMovies')) : '')
+const [keywords, setKeyword] = useState('')
 
 //функция которая обновляет стейт посквого запроса
 function handleKeyword (keywords) {
  setKeyword(keywords)
- localStorage.setItem('keywordsSavedMovies', JSON.stringify(keywords))
+
 // setCount(0)
 }
 
 //стейт чекбокса
-const [short, setShort] = useState((JSON.parse(localStorage.getItem('chekboxSavedMovies'))!==null) ? JSON.parse(localStorage.getItem('chekboxSavedMovies')) : false)
+const [short, setShort] = useState(false)
 
 const [isPreloader, setIsPreloader] = useState(false);
 
 //функция меняет состояние чекбокса
 function handleShort () {
  setShort(!short)
- localStorage.setItem('chekboxSavedMovies', JSON.stringify(!short))
 }
 
 
@@ -43,14 +42,14 @@ useEffect(()=>{
           && (duration <= 40)
           )
         })
-        localStorage.setItem('foundFromSaveMovies', JSON.stringify(resultat))
+
         setFoundMoviess(resultat)
   }
   else{
   const resultat = props.movies.filter(({ nameRU, nameEN }) => {
     return ((nameRU.toLowerCase().includes(keywords.toLowerCase()) ||
         nameEN.toLowerCase().includes(keywords.toLowerCase())))})
-        localStorage.setItem('foundFromSaveMovies', JSON.stringify(resultat))
+
         setFoundMoviess(resultat)
 }}
 , [short, keywords, props.movies, isPreloader])

@@ -5,7 +5,7 @@ import Register from "../Register/Register";
 import Profile from "../Profile/Profile";
 import PageNotFound from "../PageNotFound/PageNotFound";
 import moviesApi from "../../utils/MoviesApi";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate} from "react-router-dom";
 import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import { UserContext } from "../Context/UserContext/UserContext";
@@ -37,18 +37,13 @@ function App() {
       .then((res) => {
         setLoggedIn(true);
          setCurrentUser(res);
-        navigate("/movies", {replace: true});
-
       })
       .catch((err) => console.log(err));
   }
   function handleLogin(dataUser) {
     setLoggedIn(true);
     setCurrentUser(dataUser);
-    navigate("/movies");
   };
-
-
 
   const [nav, setNav] = useState(false);
   function handleBurgerMenu() {
