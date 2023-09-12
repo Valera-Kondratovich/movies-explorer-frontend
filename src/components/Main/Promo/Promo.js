@@ -1,9 +1,8 @@
 import React from "react";
 import imgMapPath from "../../../images/maps_header.svg";
-import { Routes, Route, useNavigate, Link } from "react-router-dom";
-// import * as auth from "../utils/auth";
+import { Link } from "react-router-dom";
 
-function Promo(props) {
+function Promo() {
   return (
     <section className="promo">
       <div className="promo__wrap">

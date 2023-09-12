@@ -70,6 +70,20 @@
   border-bottom: 1px solid #3456F3;
 }
 
+.register__input-error {
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  color: #FF004C;
+  height: 13px;
+  display: block;
+  opacity: 0;
+}
+
+.register__input-error_visible {
+opacity: 1;
+}
+
 .register__container {
   margin-bottom: 71px;
   display: flex;
@@ -105,6 +119,12 @@
 
 .register__submit:hover {
   opacity: .7;
+}
+
+.register__submit_disabled {
+  background-color: #F8F8F8;
+  cursor:default;
+  color: #C2C2C2
 }
 
 .register__wrap {

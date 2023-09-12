@@ -1,11 +1,9 @@
 import React from "react";
-import { useState } from "react";
-
-import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import "./DesktopMenu.css";
 
 function DesktopMenu(props) {
+  const location = useLocation();
   return (
     <>
       <nav className={`menu ${props.background ? "" : "menu_distance"}`}>
@@ -18,7 +16,7 @@ function DesktopMenu(props) {
             <NavLink
               className={`menu__link ${
                 props.background ? "" : "menu__link_color"
-              }`}
+              } ${(location.pathname === '/movies' ? 'menu__link_active' : '')}`}
               to="/movies"
             >
               Фильмы
@@ -28,7 +26,7 @@ function DesktopMenu(props) {
             <NavLink
               className={`menu__link ${
                 props.background ? "" : "menu__link_color"
-              }`}
+              } ${(location.pathname === '/saved-movies' ? 'menu__link_active' : '')}`}
               to="/saved-movies"
             >
               Сохранённые фильмы

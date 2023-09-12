@@ -46,6 +46,7 @@
   text-decoration: none;
   opacity: 1;
   transition: opacity .2s linear;
+  color: #000;
 }
 
 .footer__link:hover {
@@ -53,6 +54,9 @@
 }
 
 .footer__link:visited {
+  color: #000;
+}
+.footer__link:active {
   color: #000;
 }
 

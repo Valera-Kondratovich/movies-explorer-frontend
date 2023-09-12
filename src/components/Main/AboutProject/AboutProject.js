@@ -1,8 +1,6 @@
 import React from "react";
-import { Routes, Route, useNavigate, Link } from "react-router-dom";
-// import * as auth from "../utils/auth";
 
-function AboutProject(props) {
+function AboutProject() {
   return (
     <>
       <section id="about-project" className="about-project">

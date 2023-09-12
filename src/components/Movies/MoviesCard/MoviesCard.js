@@ -1,46 +1,57 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
-  Routes,
-  Route,
-  useNavigate,
-  Link,
   useLocation,
 } from "react-router-dom";
-import img from "../../../images/film.jpg";
+
 
 function MoviesCard(props) {
-  const films = {
-    name: "33 слова",
-    likes: true,
-    srcc: "../../../images/film.jpg",
-    time: "1000",
-  };
   const location = useLocation();
-  console.log(location.pathname);
-  console.log(location.pathname === "/saved-movies");
+  const [flag, setFlag] = useState(null)
+  const handleFlag = () => {
+   if (location.pathname === "/movies") {
+     return setFlag(true)
+   }
+   if (location.pathname === "/saved-movies") {
+     return setFlag(false)
+   }
+  }
+
+  useEffect(()=>{
+    handleFlag()
+  }, [location.pathname, flag])
+
 
   return (
     <div className="card">
+      <a className="card__link" target="_blank" rel="noreferrer" href={props.trailerLink}>
       <img
         className="card__img"
-        src={img}
-        alt={`${films.name}`}
-        // onClick={handleClick}
+        src={ props.movie.thumbnail
+          || `https://api.nomoreparties.co${props.movie.image.url}`}
+        alt={`Название фильма: ${props.movie.nameRU}`}
       />
+      </a>
       <div className="card__group">
-        <h2 className="card__title">{films.name}</h2>
+        <h2 className="card__title">{props.name}</h2>
         <div className="card__wrap">
-          <button
-            className={`card__button ${
-              location.pathname === "/saved-movies" ? "card__button-delite" : ""
-            }`}
-            // className={cardLikeButtonClassName}
-            type="button"
-            // onClick={handleLikeClick}
-          />
+          {flag ? (
+            <button
+              onClick={()=> props.movieSave(props.movie.id) ? props.handleDeleteMovie(props.movie) : props.handleSaveMovie(props.movie)}
+              className={`card__button ${props.movieSave(props.movie.id) ? 'card__button_saved': 'card__button_unsaved'}`}
+              type="button"
+            />
+          ) : (
+            <button
+              onClick={()=> props.handleDeleteMovie(props.movie)}
+              className="card__button-delite"
+              type="button"
+            />)
+
+          }
+
         </div>
       </div>
-      <span className="card__time">{films.time}</span>
+      <span className="card__time">{(props.duration<60) ? `${props.duration % 60}м` : `${Math.floor(props.duration / 60)}ч ${props.duration % 60}м`}</span>
     </div>
   );
 }

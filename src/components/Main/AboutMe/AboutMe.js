@@ -1,9 +1,8 @@
 import React from "react";
 import imgStudentPath from "../../../images/fotoStudent.jpg";
-import { Routes, Route, useNavigate, Link } from "react-router-dom";
-// import * as auth from "../utils/auth";
+import { Link } from "react-router-dom";
 
-function AboutMe(props) {
+function AboutMe() {
   return (
     <>
       <section className="about-me">

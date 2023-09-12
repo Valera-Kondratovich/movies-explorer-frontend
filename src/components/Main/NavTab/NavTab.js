@@ -1,11 +1,11 @@
 import React from "react";
 
-import { NavLink, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function NavTab() {
   return (
-    <nav className="nav-tab__wrap-auth">
-      <Link className="nav-tab__link-auth" to="/signin">
+    <nav className="nav-tab">
+      <Link className="nav-tab__link-auth" to="/signup">
         Регистрация
       </Link>
       <Link className="nav-tab__link-auth nav-tab__link-auth_font" to="/signin">
